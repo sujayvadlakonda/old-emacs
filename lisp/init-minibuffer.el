@@ -51,6 +51,17 @@
 (when (maybe-require-package 'marginalia)
   (add-hook 'after-init-hook 'marginalia-mode))
 
+(defun minibuffer-backward-delete ()
+  "Backward delete but by directories when possible."
+  (interactive)
+  (if (eq ?/ (char-before))
+      (progn
+        (backward-delete-char 1)
+        (while (not (eq ?/ (char-before)))
+          (backward-delete-char 1)))
+    (backward-delete-char 1)))
+
+(define-key minibuffer-mode-map (kbd "<backspace>") 'minibuffer-backward-delete)
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
