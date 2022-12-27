@@ -141,6 +141,7 @@
   (require-package 'osx-location))
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
+(require-package 'restart-emacs)
 
 (when (maybe-require-package 'uptimes)
   (setq-default uptimes-keep-count 200)
