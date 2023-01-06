@@ -61,7 +61,7 @@
           (backward-delete-char 1)))
     (backward-delete-char 1)))
 
-(define-key minibuffer-mode-map (kbd "<backspace>") 'minibuffer-backward-delete)
+(define-key minibuffer-mode-map (kbd "DEL") 'minibuffer-backward-delete)
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
