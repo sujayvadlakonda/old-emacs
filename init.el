@@ -112,6 +112,7 @@
 (require 'init-terraform)
 (require 'init-nix)
 (maybe-require-package 'nginx-mode)
+(require 'init-java)
 
 (require 'init-paredit)
 (require 'init-lisp)
