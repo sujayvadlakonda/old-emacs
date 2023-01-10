@@ -262,6 +262,8 @@ typical word processor."
 
 
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
+(add-hook 'org-agenda-mode-hook (lambda ()
+                                  (setq-local cursor-type nil)))
 
 
 ;;; Org clock
