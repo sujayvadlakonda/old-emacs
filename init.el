@@ -134,6 +134,7 @@
 (require 'init-ledger)
 (require 'init-keyboard-translations)
 (require 'init-music)
+(require 'init-mode-line)
 ;; Extra packages which don't require any configuration
 
 (require-package 'sudo-edit)
