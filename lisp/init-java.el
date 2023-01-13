@@ -20,5 +20,8 @@
   (define-key java-mode-map (kbd "C-c w") 'copy-buffer)
   (define-key java-mode-map (kbd "C-c y") 'replace-buffer))
 
+(with-eval-after-load 'cc-mode
+  (define-abbrev java-mode-abbrev-table "sout" "System.out.println("))
+
 (provide 'init-java)
 ;;; init-java.el ends here
