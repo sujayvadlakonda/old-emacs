@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (require-package 'bongo)
-;; (setq bongo-enabled-backends '(mpv))
-;; (setq bongo-mode-line-indicator-function 'ignore)
 (when (executable-find "mpv")
   (require-package 'mpv)
 
