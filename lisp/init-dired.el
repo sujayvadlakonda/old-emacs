@@ -26,5 +26,8 @@
   (with-eval-after-load 'dired
     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
 
+(add-hook 'dired-mode-hook 'hl-line-mode)
+(add-hook 'dired-mode-hook (lambda ()
+                             (setq-local cursor-type nil)))
 (provide 'init-dired)
 ;;; init-dired.el ends here
