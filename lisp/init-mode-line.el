@@ -6,6 +6,7 @@
 (setq-default column-number-mode nil)
 
 (setq-default display-time-format "%a %d %b %H:%M")
+(setq-default display-time-default-load-average nil)
 (add-hook 'after-init-hook 'display-time-mode)
 
 
