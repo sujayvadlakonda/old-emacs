@@ -22,6 +22,11 @@
 
 ;;; Code:
 
+(setq org-agenda-files '("~/gtd/inbox.org"
+                         "~/gtd/gtd.org"
+                         "~/gtd/tickler.org")
+      org-default-notes-file "~/gtd/inbox.org")
+
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
 
@@ -124,7 +129,9 @@ typical word processor."
 (setq org-refile-use-cache nil)
 
 ;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
-(setq org-refile-targets '((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5)))
+(setq org-refile-targets '((nil :maxlevel . 5)
+                           (org-agenda-files :maxlevel . 5)
+                           ("~/gtd/someday.org" :level . 1)))
 
 (with-eval-after-load 'org-agenda
   (add-to-list 'org-agenda-after-show-hook 'org-show-entry))
