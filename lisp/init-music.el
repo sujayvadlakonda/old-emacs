@@ -16,9 +16,11 @@
     (mpv-set-property "loop-file" "inf")))
 
 
-(require-package 'ytdl)
-(setq ytdl-music-folder "~/audio/"
-      ytdl-always-query-default-filename 'never)
+(when (executable-find "youtube-dl")
+  (require-package 'ytdl)
+  (setq ytdl-music-folder "~/audio/"
+        ytdl-always-query-default-filename 'never))
+
 
 (provide 'init-music)
 ;;; init-music.el ends here
