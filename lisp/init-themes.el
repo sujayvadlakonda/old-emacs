@@ -57,6 +57,13 @@
       (not (display-graphic-p)))
     (add-to-list 'dimmer-exclusion-predicates 'sanityinc/display-non-graphic-p)))
 
+;; Don't stack themes. Load them one at a time by default.
+(defun load-theme--disable-old-theme (theme &rest args)
+  "Disable current theme before loading new one."
+  (mapcar #'disable-theme custom-enabled-themes))
+(advice-add 'load-theme :before #'load-theme--disable-old-theme)
+
+(set-frame-font "Fira Code")
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
