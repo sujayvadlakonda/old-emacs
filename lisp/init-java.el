@@ -17,8 +17,8 @@
   (yank))
 
 (with-eval-after-load 'cc-mode
-  (define-key java-mode-map (kbd "C-c y") 'copy-buffer)
-  (define-key java-mode-map (kbd "C-c w") 'replace-buffer))
+  (define-key java-mode-map (kbd "C-c w") 'copy-buffer)
+  (define-key java-mode-map (kbd "C-c y") 'replace-buffer))
 
 (provide 'init-java)
 ;;; init-java.el ends here
