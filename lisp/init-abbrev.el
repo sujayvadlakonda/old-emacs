@@ -25,6 +25,8 @@
 (define-abbrev text-mode-abbrev-table "ot" "to")
 
 (add-hook 'text-mode-hook 'abbrev-mode)
+(with-eval-after-load 'abbrev
+  (diminish 'abbrev-mode))
 
 (provide 'init-abbrev)
 ;;; init-abbrev.el ends here
