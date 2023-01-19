@@ -16,8 +16,17 @@
 (define-abbrev text-mode-abbrev-table "thu" "thursday")
 (define-abbrev text-mode-abbrev-table "fri" "friday")
 (define-abbrev text-mode-abbrev-table "sat" "saturday")
+(define-abbrev text-mode-abbrev-table "ppl" "people")
 
 ;; My Abbreviations
+(define-abbrev text-mode-abbrev-table "appt" "appointment")
+(define-abbrev text-mode-abbrev-table "bb" "basketball")
+(define-abbrev text-mode-abbrev-table "vb" "volleyball")
+(define-abbrev text-mode-abbrev-table "tt" "table tennis")
+(define-abbrev text-mode-abbrev-table "oo" "object oriented")
+(define-abbrev text-mode-abbrev-table "ood" "object oriented design")
+(define-abbrev text-mode-abbrev-table "oop" "object oriented programming")
+(define-abbrev text-mode-abbrev-table "ml" "machine learning")
 (define-abbrev text-mode-abbrev-table "inv" "investigate")
 (define-abbrev text-mode-abbrev-table "oa" "online assessment")
 
