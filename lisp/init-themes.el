@@ -63,7 +63,8 @@
   (mapcar #'disable-theme custom-enabled-themes))
 (advice-add 'load-theme :before #'load-theme--disable-old-theme)
 
-(set-frame-font "Fira Code")
+(set-frame-font "Fira Code 20")
+
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
