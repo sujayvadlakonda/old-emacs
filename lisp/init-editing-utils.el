@@ -291,6 +291,9 @@ ORIG is the advised function, which is called with its ARGS."
 
 (advice-add 'kmacro-call-macro :around 'sanityinc/disable-features-during-macro-call)
 
+(setq visible-cursor nil)
+(blink-cursor-mode 0)
+
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
