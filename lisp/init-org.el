@@ -393,6 +393,9 @@ typical word processor."
       (sql . t)
       (sqlite . t)))))
 
+(require-package 'disable-mouse)
+(add-hook 'org-agenda-mode-hook 'disable-mouse-mode)
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
