@@ -10,8 +10,11 @@
 (define-abbrev text-mode-abbrev-table "bw" "between")
 (define-abbrev text-mode-abbrev-table "tmrw" "tomorrow")
 (define-abbrev text-mode-abbrev-table "ppl" "people")
+(define-abbrev text-mode-abbrev-table "hw" "homework")
+(define-abbrev text-mode-abbrev-table "yt" "youtube")
 
 ;; My Abbreviations
+(define-abbrev text-mode-abbrev-table "apt" "apartment")
 (define-abbrev text-mode-abbrev-table "appt" "appointment")
 (define-abbrev text-mode-abbrev-table "bb" "basketball")
 (define-abbrev text-mode-abbrev-table "vb" "volleyball")
@@ -22,6 +25,9 @@
 (define-abbrev text-mode-abbrev-table "ml" "machine learning")
 (define-abbrev text-mode-abbrev-table "inv" "investigate")
 (define-abbrev text-mode-abbrev-table "oa" "online assessment")
+(define-abbrev text-mode-abbrev-table "gb" "grand blue")
+(define-abbrev text-mode-abbrev-table "q" "question")
+(define-abbrev text-mode-abbrev-table "y" "why")
 
 ;; Typos
 (define-abbrev text-mode-abbrev-table "ot" "to")
