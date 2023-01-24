@@ -400,6 +400,8 @@ typical word processor."
   ;; Unbinds org-save-all-org-buffers. Not useful w autosave.
   (define-key org-agenda-mode-map (kbd "s") 'org-agenda-schedule))
 
+(add-hook 'org-mode-hook 'auto-fill-mode)
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
