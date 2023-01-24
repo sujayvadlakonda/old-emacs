@@ -396,6 +396,10 @@ typical word processor."
 (require-package 'disable-mouse)
 (add-hook 'org-agenda-mode-hook 'disable-mouse-mode)
 
+(with-eval-after-load 'org-agenda
+  ;; Unbinds org-save-all-org-buffers. Not useful w autosave.
+  (define-key org-agenda-mode-map (kbd "s") 'org-agenda-schedule))
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
