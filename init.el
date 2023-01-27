@@ -129,16 +129,14 @@
 (require 'init-folding)
 (require 'init-dash)
 
-;;(require 'init-twitter)
-;; (require 'init-mu)
 (require 'init-ledger)
 (require 'init-keyboard-translations)
 (require 'init-auto-save)
 (require 'init-music)
 (require 'init-mode-line)
 (require 'init-abbrev)
-;; Extra packages which don't require any configuration
 
+;; Extra packages which don't require any configuration
 (require-package 'sudo-edit)
 (require-package 'gnuplot)
 (require-package 'lua-mode)
@@ -153,6 +151,7 @@
   (setq-default uptimes-keep-count 200)
   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
+;; Seems to be used in emacs-lisp, cider, ielm, cider-repl
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
 
