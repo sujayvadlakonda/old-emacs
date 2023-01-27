@@ -153,10 +153,6 @@
   (setq-default uptimes-keep-count 200)
   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
-;; Seems to be used in emacs-lisp, cider, ielm, cider-repl
-(when (fboundp 'global-eldoc-mode)
-  (add-hook 'after-init-hook 'global-eldoc-mode))
-
 (require 'init-direnv)
 
 

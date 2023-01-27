@@ -164,7 +164,8 @@ there is no current file, eval the current buffer."
 
 (defvar sanityinc/lispy-modes-hook
   '(enable-paredit-mode
-    sanityinc/enable-check-parens-on-save)
+    sanityinc/enable-check-parens-on-save
+    eldoc-mode)
   "Hook run in all Lisp modes.")
 
 
