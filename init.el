@@ -128,8 +128,8 @@
 
 (require 'init-folding)
 (require 'init-dash)
-
 (require 'init-ledger)
+
 (require 'init-keyboard-translations)
 (require 'init-auto-save)
 (require 'init-music)
