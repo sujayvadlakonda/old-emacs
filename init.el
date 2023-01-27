@@ -135,6 +135,7 @@
 (require 'init-music)
 (require 'init-mode-line)
 (require 'init-abbrev)
+(require 'init-file)
 
 ;; Extra packages which don't require any configuration
 (require-package 'sudo-edit)
