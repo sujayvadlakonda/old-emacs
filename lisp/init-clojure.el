@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; See also init-clojure-cider.el
-
 (when (maybe-require-package 'clojure-mode)
   (require-package 'cljsbuild-mode)
   (require-package 'elein)
@@ -12,6 +10,6 @@
     (add-hook 'clojure-mode-hook 'sanityinc/lisp-setup)
     (add-hook 'clojure-mode-hook 'subword-mode)))
 
+(require 'init-clojure-cider)
 
 (provide 'init-clojure)
-;;; init-clojure.el ends here
