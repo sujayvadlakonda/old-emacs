@@ -1,4 +1,4 @@
-;;; init-elpa.el --- Settings and helpers for package.el -*- lexical-binding: t -*-
+;;; init-package.el --- Settings and helpers for package.el -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -148,5 +148,5 @@ advice for `require-package', to which ARGS are passed."
                 (package-delete  old-package)))))
       (message "All packages are up to date"))))
 
-(provide 'init-elpa)
-;;; init-elpa.el ends here
+(provide 'init-package)
+;;; init-package.el ends here
