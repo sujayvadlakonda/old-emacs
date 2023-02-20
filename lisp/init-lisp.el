@@ -282,5 +282,7 @@ there is no current file, eval the current buffer."
 
 (maybe-require-package 'cask-mode)
 
+(add-hook 'emacs-lisp-mode-hook 'flymake-mode-off)
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here
