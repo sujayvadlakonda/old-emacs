@@ -148,5 +148,7 @@ advice for `require-package', to which ARGS are passed."
                 (package-delete  old-package)))))
       (message "All packages are up to date"))))
 
+(require-package 'use-package)
+
 (provide 'init-package)
 ;;; init-package.el ends here
