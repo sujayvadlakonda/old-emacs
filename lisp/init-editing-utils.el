@@ -126,8 +126,10 @@
   (define-key browse-kill-ring-mode-map (kbd "C-g") 'browse-kill-ring-quit)
   (define-key browse-kill-ring-mode-map (kbd "M-n") 'browse-kill-ring-forward)
   (define-key browse-kill-ring-mode-map (kbd "M-p") 'browse-kill-ring-previous))
-(with-eval-after-load 'page-break-lines
-  (add-to-list 'page-break-lines-modes 'browse-kill-ring-mode))
+
+(use-package page-break-lines
+  :ensure t
+  :hook browse-kill-ring-mode)
 
 
 ;; Don't disable narrowing commands
@@ -177,7 +179,6 @@
 ;;; Page break lines
 
 (when (maybe-require-package 'page-break-lines)
-  (add-hook 'after-init-hook 'global-page-break-lines-mode)
   (with-eval-after-load 'page-break-lines
     (diminish 'page-break-lines-mode)))
 
