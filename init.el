@@ -147,7 +147,6 @@
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
 (require-package 'restart-emacs)
-(require-package 'helpful)
 (require-package 'titlecase)
 
 (when (maybe-require-package 'uptimes)
