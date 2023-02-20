@@ -284,5 +284,10 @@ there is no current file, eval the current buffer."
 
 (add-hook 'emacs-lisp-mode-hook 'flymake-mode-off)
 
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (push '("lambda" . ?λ) prettify-symbols-alist)
+            (prettify-symbols-mode)))
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here
