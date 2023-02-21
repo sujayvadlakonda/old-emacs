@@ -168,6 +168,11 @@
 ;; Allow users to provide an optional "init-local" containing personal settings
 (require 'init-local nil t)
 
+(setq confirm-kill-processes nil)
+(setq kill-buffer-query-functions
+      (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
+
 (provide 'init)
 
 ;; Local Variables:
