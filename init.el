@@ -152,7 +152,7 @@
   (add-hook 'after-init-hook (lambda () (require 'uptimes))))
 
 (require 'init-direnv)
-
+(global-eldoc-mode -1)
 
 
 ;; Allow access from emacsclient
