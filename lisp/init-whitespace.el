@@ -1,26 +1,11 @@
-;;; init-whitespace.el --- Special handling for whitespace -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
+(setq-default show-trailing-whitespace t)
 
-(setq-default show-trailing-whitespace nil)
+;; I only hooked prog-mode to preserve the virtual space
+;; in capture buffers with auto-save-visited-mode
+(use-package ws-butler
+  :ensure t
+  :diminish
+  :hook prog-mode)
 
-
-;;; Whitespace
-
-(defun sanityinc/show-trailing-whitespace ()
-  "Enable display of trailing whitespace in this buffer."
-  (setq-local show-trailing-whitespace t))
-
-(dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-  (add-hook hook 'sanityinc/show-trailing-whitespace))
-
-
-
-(global-set-key [remap just-one-space] 'cycle-spacing)
-(require-package 'ws-butler)
-(diminish 'ws-butler-mode)
-
-(add-hook 'after-init-hook 'ws-butler-global-mode)
 
 (provide 'init-whitespace)
-;;; init-whitespace.el ends here
