@@ -133,7 +133,7 @@ typical word processor."
 ;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets '((nil :maxlevel . 5)
                            (org-agenda-files :maxlevel . 5)
-                           ("~/gtd/someday.org" :level . 1)))
+                           ("~/gtd/someday.org" :maxlevel . 5)))
 
 (with-eval-after-load 'org-agenda
   (add-to-list 'org-agenda-after-show-hook 'org-show-entry))
