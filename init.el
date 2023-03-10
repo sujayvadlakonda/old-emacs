@@ -1,11 +1,10 @@
+(setq debug-on-error nil)
 
 (defun require-init (feature)
   "Require features without provide"
   (unless (featurep feature)
     (load (symbol-name feature))
     (provide feature)))
-
-;;(setq debug-on-error t)
 
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
