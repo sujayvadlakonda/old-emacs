@@ -75,6 +75,3 @@
 (add-hook 'after-init-hook 'default-text-scale-mode)
 
 (require-package 'disable-mouse)
-
-
-(provide 'init-gui-frames)
