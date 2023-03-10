@@ -400,7 +400,10 @@ typical word processor."
 
 (with-eval-after-load 'org-agenda
   ;; Unbinds org-save-all-org-buffers. Not useful w autosave.
-  (define-key org-agenda-mode-map (kbd "s") 'org-agenda-schedule))
+  (define-key org-agenda-mode-map (kbd "s") 'org-agenda-schedule)
+  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-kill)
+  (define-key org-agenda-mode-map (kbd "C-k") nil)
+  (define-key org-agenda-mode-map (kbd "y") nil))
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
