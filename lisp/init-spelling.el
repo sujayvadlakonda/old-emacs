@@ -1,6 +1,3 @@
-;;; init-spelling.el --- Spell check settings -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
 
 (require 'ispell)
 
@@ -50,4 +47,3 @@ abort completely with `C-g'."
     (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)))
 
 (provide 'init-spelling)
-;;; init-spelling.el ends here

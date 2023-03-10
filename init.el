@@ -1,17 +1,10 @@
-;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
-;;; Commentary:
 
-;; This file bootstraps the configuration, which is divided into
-;; a number of other files.
 (defun require-init (feature)
   "Require features without provide"
   (unless (featurep feature)
     (load (symbol-name feature))
     (provide feature)))
 
-;;; Code:
-
-;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
 ;;(setq debug-on-error t)
 
 (let ((minver "26.1"))
@@ -21,31 +14,22 @@
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require 'init-benchmarking) ;; Measure startup time
+(require 'init-benchmarking)
 
 (defconst *is-a-mac* (eq system-type 'darwin))
 
-
-;; Adjust garbage collection thresholds during startup, and thereafter
 
 (setq garbage-collection-messages t)
 (setq gc-cons-threshold (* 128 1024 1024))
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold (* 20 1024 1024))))
 
-
-;; Bootstrap config
-
-
 (setq custom-file null-device)
 (require 'init-utils)
-(require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
-;; Calls (package-initialize)
-(require 'init-package)      ;; Machinery for installing required packages
-(require 'init-exec-path) ;; Set up $PATH
+(require 'init-site-lisp)
+(require 'init-package)
+(require 'init-exec-path)
 
-
-;; Allow users to provide an optional "init-preload-local.el"
 (require 'init-preload-local nil t)
 
 ;; Load configs for specific features and modes
@@ -157,7 +141,6 @@
 
 (require 'init-direnv)
 (global-eldoc-mode -1)
-
 
 ;; Allow access from emacsclient
 (add-hook 'after-init-hook
@@ -178,9 +161,3 @@
 
 
 (provide 'init)
-
-;; Local Variables:
-;; coding: utf-8
-;; no-byte-compile: t
-;; End:
-;;; init.el ends here
