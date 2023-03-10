@@ -13,7 +13,6 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 
-(setq garbage-collection-messages t)
 (setq gc-cons-threshold (* 128 1024 1024))
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold (* 20 1024 1024))))
