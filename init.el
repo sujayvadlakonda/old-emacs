@@ -3,6 +3,11 @@
 
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
+(defun require-init (feature)
+  "Require features without provide"
+  (unless (featurep feature)
+    (load (symbol-name feature))
+    (provide feature)))
 
 ;;; Code:
 
