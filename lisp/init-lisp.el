@@ -4,11 +4,6 @@
 
 (setq-default debugger-bury-or-kill 'kill)
 
-(require-package 'elisp-slime-nav)
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-  (add-hook hook 'turn-on-elisp-slime-nav-mode))
-(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
-
 (defun sanityinc/headerise-elisp ()
   "Add minimal header and footer to an elisp buffer in order to placate flycheck."
   (interactive)
@@ -263,8 +258,8 @@ there is no current file, eval the current buffer."
   (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
 
 
-(when (maybe-require-package 'package-lint-flymake)
-  (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
+(require-package 'package-lint-flymake)
+;; (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup)
 
 
 
@@ -282,12 +277,6 @@ there is no current file, eval the current buffer."
 
 (maybe-require-package 'cask-mode)
 
-(add-hook 'emacs-lisp-mode-hook 'flymake-mode-off)
-
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (push '("lambda" . ?λ) prettify-symbols-alist)
-            (prettify-symbols-mode)))
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

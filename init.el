@@ -95,6 +95,7 @@
 
 (require 'init-paredit)
 (require 'init-lisp)
+(require 'init-emacs-lisp)
 (require 'init-slime)
 (require 'init-clojure)
 (require 'init-common-lisp)
