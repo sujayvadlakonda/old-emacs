@@ -407,6 +407,23 @@ typical word processor."
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
+(defun sujay/org-capture ()
+  "Capture a todo into the inbox."
+  (interactive)
+  (org-capture nil "t"))
+
+(define-key global-map (kbd "C-c c") #'sujay/org-capture)
+
+(defun sujay/org-capture-finalize ()
+  (interactive)
+  (org-capture-finalize)
+  (when (fboundp 'org-agenda-redo-all)
+    (save-window-excursion
+      (org-agenda-redo-all t))))
+
+(with-eval-after-load 'org-capture
+  (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
