@@ -192,7 +192,7 @@ typical word processor."
         `(,active-project-match ("NEXT")))
 
   (setq org-agenda-compact-blocks t
-        org-agenda-sticky t
+        org-agenda-sticky nil
         org-agenda-start-on-weekday nil
         org-agenda-span 'day
         org-agenda-include-diary nil
