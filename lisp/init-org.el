@@ -25,7 +25,8 @@
 (setq org-agenda-files '("~/gtd/inbox.org"
                          "~/gtd/gtd.org"
                          "~/gtd/tickler.org"
-                         "~/gtd/hygiene.org")
+                         "~/gtd/hygiene.org"
+                         "~/gtd/school.org")
       org-default-notes-file "~/gtd/inbox.org")
 
 (when *is-a-mac*
