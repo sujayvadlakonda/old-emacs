@@ -11,6 +11,7 @@
 (define-abbrev text-mode-abbrev-table "ppl" "people")
 (define-abbrev text-mode-abbrev-table "hw" "homework")
 (define-abbrev text-mode-abbrev-table "yt" "youtube")
+(define-abbrev text-mode-abbrev-table "gh" "github")
 
 ;; My Abbreviations
 (define-abbrev text-mode-abbrev-table "apt" "apartment")
@@ -34,6 +35,7 @@
 
 
 ;; Typos
+(define-abbrev text-mode-abbrev-table "si" "is")
 (define-abbrev text-mode-abbrev-table "ot" "to")
 
 (add-hook 'text-mode-hook 'abbrev-mode)
