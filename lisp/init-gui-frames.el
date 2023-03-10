@@ -66,6 +66,8 @@
   (when (maybe-require-package 'ns-auto-titlebar)
     (ns-auto-titlebar-mode)))
 
+(setq ns-use-proxy-icon nil)
+
 
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
