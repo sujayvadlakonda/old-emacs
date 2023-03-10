@@ -18,7 +18,7 @@
           (lambda () (setq gc-cons-threshold (* 20 1024 1024))))
 
 (setq custom-file null-device)
-(require 'init-utils)
+(require-init 'init-utils)
 (require 'init-site-lisp)
 (require 'init-package)
 (require 'init-exec-path)
