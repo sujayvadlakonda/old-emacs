@@ -48,7 +48,7 @@
 
 
 ;; Various preferences
-(setq org-log-done t
+(setq org-log-done nil
       org-edit-timestamp-down-means-later t
       org-hide-emphasis-markers t
       org-catch-invisible-edits 'show
@@ -118,8 +118,8 @@ typical word processor."
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
-         "* NEXT %?\n%U\n" :clock-resume t)
+      `(("t" "todo" entry (file "")     ; "" => `org-default-notes-file'
+         "* NEXT %?\n" :clock-resume t)
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
         ))
