@@ -1,9 +1,16 @@
+;; Use `endless/ispell-word-then-abbrev' to fix spelling errors
+;; Once an error is fixed that error will be corrected automatically
 
-(require 'ispell)
+;;; (require 'ispell)
 
-(when (executable-find ispell-program-name)
-  ;; Add spell-checking in comments for all programming language modes
-  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (when (executable-find ispell-program-name)
+;;   ;; Add spell-checking in comments for all programming language modes
+;;   (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+;;   (with-eval-after-load 'flyspell
+;;     (define-key flyspell-mode-map (kbd "C-;") nil)
+;;     (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)))
+
 (defun endless/simple-get-word ()
   (car-safe (save-excursion (ispell-get-word nil))))
 
@@ -42,8 +49,5 @@ abort completely with `C-g'."
 
 (setq save-abbrevs 'silently)
 
-  (with-eval-after-load 'flyspell
-    (define-key flyspell-mode-map (kbd "C-;") nil)
-    (add-to-list 'flyspell-prog-text-faces 'nxml-text-face)))
 
 (provide 'init-spelling)

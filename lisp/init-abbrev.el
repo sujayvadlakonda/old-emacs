@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq save-abbrevs nil)
-
 ;; Common Abbreviations
 (define-abbrev text-mode-abbrev-table "w" "with")
 (define-abbrev text-mode-abbrev-table "wo" "without")
