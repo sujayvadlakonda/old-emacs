@@ -1,6 +1,8 @@
 ;; Use `endless/ispell-word-then-abbrev' to fix spelling errors
 ;; Once an error is fixed that error will be corrected automatically
 
+(require 'ispell)
+
 (defun endless/simple-get-word ()
   (car-safe (save-excursion (ispell-get-word nil))))
 
