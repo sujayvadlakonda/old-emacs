@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (setq debug-on-error nil)
 
 (defun require-init (feature)
