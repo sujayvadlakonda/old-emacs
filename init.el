@@ -25,7 +25,7 @@
 (require-init 'init-package)
 (require-init 'init-exec-path)
 
-(require-init 'init-preload-local nil t)
+(require 'init-preload-local nil t)
 
 ;; Load configs for specific features and modes
 (require-package 'diminish)
@@ -149,7 +149,7 @@
 (require-init 'init-locales)
 
 ;; Allow users to provide an optional "init-local" containing personal settings
-(require-init 'init-local nil t)
+(require 'init-local nil t)
 
 (setq confirm-kill-processes nil)
 (setq kill-buffer-query-functions
