@@ -90,7 +90,3 @@ Call a second time to restore the original window configuration."
   (require-package 'windswap)
   (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control))
   (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
-
-
-(provide 'init-windows)
-;;; init-windows.el ends here
