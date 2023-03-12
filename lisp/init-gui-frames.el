@@ -56,7 +56,9 @@
   (when (maybe-require-package 'ns-auto-titlebar)
     (ns-auto-titlebar-mode)))
 
+;; Make the title bar empty
 (setq ns-use-proxy-icon nil)
+(setq frame-title-format "")
 
 
 (setq frame-title-format
