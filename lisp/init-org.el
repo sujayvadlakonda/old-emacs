@@ -1,5 +1,4 @@
-;;; init-org.el --- Org-mode config -*- lexical-binding: t -*-
-;;; Commentary:
+;; -*- lexical-binding: t -*-
 
 ;; Among settings for many aspects of `org-mode', this code includes
 ;; an opinionated setup for the Getting Things Done (GTD) system based
@@ -19,8 +18,6 @@
 ;; `org-agenda' command, which gives a convenient overview.
 ;; `org-todo-keywords' is customised here to provide corresponding
 ;; TODO states, which should make sense to GTD adherents.
-
-;;; Code:
 
 (setq org-agenda-files '("~/gtd/inbox.org"
                          "~/gtd/gtd.org"
@@ -67,7 +64,6 @@
             (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
 
 
-
 
 (maybe-require-package 'writeroom-mode)
 
@@ -112,9 +108,8 @@ typical word processor."
 
 
 (setq org-support-shift-select t)
-
-;;; Capturing
 
+;;; Capturing
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
@@ -125,9 +120,7 @@ typical word processor."
         ))
 
 
-
 ;;; Refiling
-
 (setq org-refile-use-cache nil)
 
 ;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
@@ -166,9 +159,7 @@ typical word processor."
 ;; Allow refile to create parent tasks with confirmation
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-
 ;;; To-do settings
-
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
@@ -180,9 +171,7 @@ typical word processor."
               ("PROJECT" :inherit font-lock-string-face))))
 
 
-
 ;;; Agenda views
-
 (setq-default org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3))
 
 
@@ -274,7 +263,6 @@ typical word processor."
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   (setq-local cursor-type nil)))
 
-
 ;;; Org clock
 
 ;; Save the running clock and all clock history when exiting Emacs, load it on startup
@@ -295,7 +283,6 @@ typical word processor."
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 
-
 ;;; Show the clocked-in task - if any - in the header line
 (defun sanityinc/show-org-clock-in-header-line ()
   (setq-default header-line-format '((" " org-mode-line-string " "))))
@@ -312,7 +299,6 @@ typical word processor."
   (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
 
 
-
 (when (and *is-a-mac* (file-directory-p "/Applications/org-clock-statusbar.app"))
   (add-hook 'org-clock-in-hook
             (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
@@ -322,46 +308,20 @@ typical word processor."
                                 "tell application \"org-clock-statusbar\" to clock out"))))
 
 
-
 ;; TODO: warn about inconsistent items, e.g. TODO inside non-PROJECT
 ;; TODO: nested projects!
 
 
-
 ;;; Archiving
-
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archive")
 
 
 
-
-
 (require-package 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)
 (with-eval-after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
-
-
-;; ;; Show iCal calendars in the org agenda
-;; (when (and *is-a-mac* (require 'org-mac-iCal nil t))
-;;   (setq org-agenda-include-diary t
-;;         org-agenda-custom-commands
-;;         '(("I" "Import diary from iCal" agenda ""
-;;            ((org-agenda-mode-hook #'org-mac-iCal)))))
-
-;;   (add-hook 'org-agenda-cleanup-fancy-diary-hook
-;;             (lambda ()
-;;               (goto-char (point-min))
-;;               (save-excursion
-;;                 (while (re-search-forward "^[a-z]" nil t)
-;;                   (goto-char (match-beginning 0))
-;;                   (insert "0:00-24:00 ")))
-;;               (while (re-search-forward "^ [a-z]" nil t)
-;;                 (goto-char (match-beginning 0))
-;;                 (save-excursion
-;;                   (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
-;;                 (insert (match-string 0))))))
 
 
 (with-eval-after-load 'org
@@ -424,6 +384,3 @@ typical word processor."
 (with-eval-after-load 'org-capture
   (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
 
-
-(provide 'init-org)
-;;; init-org.el ends here
