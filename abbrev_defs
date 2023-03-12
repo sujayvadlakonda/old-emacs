@@ -1,8 +1,17 @@
 ;;-*-coding: utf-8;-*-
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("architecturees" "architectures" nil :count 0)
+    ("beign" "being" nil :count 0)
+    ("bojects" "objects" nil :count 0)
+    ("cnotract" "contract" nil :count 0)
+    ("coencerned" "concerned" nil :count 0)
     ("darstic" "drastic" nil :count 1)
+    ("diagrmas" "diagrams" nil :count 0)
+    ("partitons" "partitions" nil :count 0)
+    ("reelvant" "relevant" nil :count 0)
     ("ret" "return" nil :count 0)
+    ("severall" "several" nil :count 0)
     ("wo" "without" nil :count 0)
    ))
 
@@ -30,11 +39,11 @@
     ("ot" "to" nil :count 0)
     ("ppl" "people" nil :count 0)
     ("q" "question" nil :count 0)
-    ("si" "is" nil :count 0)
+    ("si" "is" nil :count 1)
     ("tmrw" "tomorrow" nil :count 0)
     ("tt" "table tennis" nil :count 0)
     ("vb" "volleyball" nil :count 0)
-    ("w" "with" nil :count 0)
+    ("w" "with" nil :count 1)
     ("wo" "without" nil :count 0)
     ("yt" "youtube" nil :count 0)
    ))
