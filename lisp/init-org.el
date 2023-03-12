@@ -384,3 +384,4 @@ typical word processor."
 (with-eval-after-load 'org-capture
   (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
 
+(require-package 'org-modern)
