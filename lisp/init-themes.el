@@ -1,7 +1,3 @@
-;;; init-themes.el --- Defaults for themes -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
-
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
 (require-package 'modus-themes)
@@ -27,9 +23,7 @@
 (add-hook 'after-init-hook 'reapply-themes)
 
 
-
 ;; Toggle between light and dark
-
 (defun light ()
   "Activate a light color theme."
   (interactive)
@@ -64,7 +58,3 @@
 (advice-add 'load-theme :before #'load-theme--disable-old-theme)
 
 (set-frame-font "Fira Code 20")
-
-
-(provide 'init-themes)
-;;; init-themes.el ends here
