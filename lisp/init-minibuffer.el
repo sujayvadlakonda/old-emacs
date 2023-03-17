@@ -1,7 +1,4 @@
-;;; init-minibuffer.el --- Config for minibuffer completion       -*- lexical-binding: t; -*-
-;;; Commentary:
-;;; Code:
-
+;; -*- lexical-binding: t; -*-
 
 (when (maybe-require-package 'vertico)
   (add-hook 'after-init-hook 'vertico-mode)
@@ -62,6 +59,3 @@
     (backward-delete-char 1)))
 
 (define-key minibuffer-mode-map (kbd "DEL") 'minibuffer-backward-delete)
-
-(provide 'init-minibuffer)
-;;; init-minibuffer.el ends here
