@@ -23,3 +23,6 @@
   :hook (emacs-lisp help))
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (flymake-mode -1)))
+
+;; Probably dangerous
+(add-hook 'emacs-lisp-mode-hook 'elisp-enable-lexical-binding)
