@@ -22,6 +22,3 @@
 (add-hook 'emacs-lisp-mode-hook 'page-break-lines-mode)
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (flymake-mode -1)))
-
-
-(provide 'init-emacs-lisp)
