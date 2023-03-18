@@ -260,22 +260,3 @@ ORIG is the advised function, which is called with its ARGS."
 (setq visible-cursor nil)
 (blink-cursor-mode 0)
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-keybinding nil)
-  (setq evil-disable-insert-state-bindings t)
-  :config
-  (evil-define-key 'motion global-map
-    (kbd "j") 'evil-backward-char
-    (kbd "k") 'evil-next-line
-    (kbd "l") 'evil-previous-line
-    (kbd ";") 'evil-forward-char
-    (kbd "h") 'evil-repeat-find-char)
-  (evil-set-undo-system 'undo-redo))
-
-;; (use-package evil-collection
-;;   :ensure t
-;;   :after evil
-;;   :config
-;;   (evil-collection-init))
