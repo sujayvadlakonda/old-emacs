@@ -1,7 +1,3 @@
-;;; init-benchmarking.el --- Measure startup and require times -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
-
 (defun sanityinc/time-subtract-millis (b a)
   (* 1000.0 (float-time (time-subtract b a))))
 
