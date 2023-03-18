@@ -1,5 +1,8 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Use `load-theme' to load one theme at a time
+;; Customize `custom-enabled-themes' to set startup theme
+
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
 (require-package 'modus-themes)
