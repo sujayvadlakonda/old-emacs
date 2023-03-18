@@ -8,7 +8,7 @@
 ;; Use `pop-tag-mark' to jump back
 
 (require-package 'elisp-slime-nav)
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook help-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
@@ -18,7 +18,8 @@
             (push '("lambda" . ?λ) prettify-symbols-alist)
             (prettify-symbols-mode)))
 
-(require-package 'page-break-lines)
-(add-hook 'emacs-lisp-mode-hook 'page-break-lines-mode)
+(use-package page-break-lines
+  :ensure t
+  :hook (emacs-lisp help))
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (flymake-mode -1)))

@@ -101,7 +101,7 @@
 (require-init 'init-slime)
 (require-init 'init-clojure)
 (require-init 'init-common-lisp)
-(require-init 'init-help)
+
 
 (require-init 'init-spelling)
 
