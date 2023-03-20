@@ -18,9 +18,9 @@
             (push '("lambda" . ?λ) prettify-symbols-alist)
             (prettify-symbols-mode)))
 
-(use-package page-break-lines
-  :ensure t
-  :hook (emacs-lisp help))
+(require-package 'page-break-lines)
+(add-hook 'emacs-lisp-mode-hook 'page-break-lines-mode)
+(add-hook 'help-mode-hook 'page-break-lines-mode)
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (flymake-mode -1)))
 
