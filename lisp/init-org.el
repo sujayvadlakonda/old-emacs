@@ -370,7 +370,8 @@ typical word processor."
 (defun sujay/org-capture ()
   "Capture a todo into the inbox."
   (interactive)
-  (org-capture nil "t"))
+  (org-capture nil "t")
+  (modalka-mode -1))
 
 (define-key global-map (kbd "C-c c") #'sujay/org-capture)
 
