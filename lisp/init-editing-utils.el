@@ -280,6 +280,7 @@ ORIG is the advised function, which is called with its ARGS."
 
   (defun modalka-error ()
     (interactive)
+    (ding)
     (message "Control keys are bad you know?"))
 
   (define-key modalka-mode-map (kbd "C-n") 'modalka-error)
