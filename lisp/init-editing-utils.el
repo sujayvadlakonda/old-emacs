@@ -300,7 +300,7 @@ ORIG is the advised function, which is called with its ARGS."
   (define-key modalka-mode-map (kbd "f") 'find-file)
 
   (define-key modalka-mode-map (kbd "c") 'sujay/org-capture)
-  (define-key modalka-mode-map (kbd "a") 'org-agenda)
+  (define-key modalka-mode-map (kbd "a") (lambda () (interactive) (org-agenda nil "g")))
   (define-key modalka-mode-map (kbd "t") 'org-todo)
 
   (define-key modalka-mode-map (kbd "0") 'delete-window)
