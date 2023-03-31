@@ -60,4 +60,15 @@
   (mapcar #'disable-theme custom-enabled-themes))
 (advice-add 'load-theme :before #'load-theme--disable-old-theme)
 
-(set-frame-font "Fira Code 20")
+(set-frame-font "Fira Code")
+
+(require-package 'default-text-scale)
+(autoload 'default-text-scale-increment "default-text-scale")
+
+(defun default-text-scale-set (new-height)
+  (interactive)
+  (let* ((current-height (face-attribute 'default :height))
+         (increment (- new-height current-height)))
+    (default-text-scale-increment increment)))
+
+(default-text-scale-set 200)
