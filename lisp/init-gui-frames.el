@@ -58,7 +58,7 @@
 
 ;; Make the title bar empty
 (setq ns-use-proxy-icon nil)
-(setq frame-title-format nil)
+(setq frame-title-format "")
 
 
 ;; Non-zero values for `line-spacing' can mess up ansi-term and co,
