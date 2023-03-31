@@ -23,6 +23,3 @@
 (add-hook 'help-mode-hook 'page-break-lines-mode)
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (flymake-mode -1)))
-
-;; Probably dangerous
-(add-hook 'emacs-lisp-mode-hook 'elisp-enable-lexical-binding)
