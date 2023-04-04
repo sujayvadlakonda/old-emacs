@@ -1,65 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;; Use `load-theme' to load one theme at a time
-;; Customize `custom-enabled-themes' to set startup theme
-
-(require-package 'color-theme-sanityinc-solarized)
-(require-package 'color-theme-sanityinc-tomorrow)
-(require-package 'modus-themes)
-(require-package 'ef-themes)
-(require-package 'standard-themes)
-(require-package 'doom-themes)
-
-;; Don't prompt to confirm theme safety. This avoids problems with
-;; first-time startup on Emacs > 26.3.
-(setq custom-safe-themes t)
-
-;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-bright))
-
-;; Ensure that themes will be applied even if they have not been customized
-(defun reapply-themes ()
-  "Forcibly load the themes listed in `custom-enabled-themes'."
-  (dolist (theme custom-enabled-themes)
-    (unless (custom-theme-p theme)
-      (load-theme theme)))
-  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
-
-(add-hook 'after-init-hook 'reapply-themes)
-
-
-;; Toggle between light and dark
-(defun light ()
-  "Activate a light color theme."
-  (interactive)
-  (setq custom-enabled-themes '(sanityinc-tomorrow-day))
-  (reapply-themes))
-
-(defun dark ()
-  "Activate a dark color theme."
-  (interactive)
-  (setq custom-enabled-themes '(sanityinc-tomorrow-bright))
-  (reapply-themes))
-
-
-;; Don't dim in terminal windows. Even with 256 colours it can
-;; lead to poor contrast.  Better would be to vary dimmer-fraction
-;; according to frame type.
-(when (display-graphic-p)
-  (require-package 'dimmer)
-  (setq-default dimmer-fraction 0.15)
-  (add-hook 'after-init-hook 'dimmer-mode)
-  (with-eval-after-load 'dimmer
-    ;; TODO: file upstream as a PR
-    (advice-add 'frame-set-background-mode :after (lambda (&rest args) (dimmer-process-all)))))
-
-
-;; Don't stack themes. Load them one at a time by default.
-(defun load-theme--disable-old-theme (theme &rest args)
-  "Disable current theme before loading new one."
-  (mapcar #'disable-theme custom-enabled-themes))
-(advice-add 'load-theme :before #'load-theme--disable-old-theme)
-
 (set-frame-font "Fira Code")
 
 (require-package 'default-text-scale)
@@ -72,3 +12,40 @@
     (default-text-scale-increment increment)))
 
 (default-text-scale-set 200)
+
+;; Don't prompt to confirm theme safety. This avoids problems with
+;; first-time startup on Emacs > 26.3.
+(setq custom-safe-themes t)
+
+(require-package 'modus-themes)
+
+(defvar day-theme 'modus-operandi)
+(defvar night-theme 'modus-vivendi)
+(defvar day-hour 7)
+(defvar night-hour 19)
+
+(defun load-day-or-night-theme ()
+  (mapc #'disable-theme custom-enabled-themes)
+
+  (let ((current-hour (string-to-number (format-time-string "%H"))))
+    (if (and (>= current-hour day-hour)
+             (< current-hour night-hour))
+        (load-theme day-theme :no-confirm)
+      (load-theme night-theme :no-confirm))))
+
+
+(let ((24-hours-in-seconds (* 24 60 60)))
+  (run-at-time (concat (format "%d" day-hour) ":00") 24-hours-in-seconds #'load-day-or-night-theme)
+  (run-at-time (concat (format "%d" night-hour) ":00") 24-hours-in-seconds #'load-day-or-night-theme))
+
+(load-day-or-night-theme)
+
+;; Don't dim in terminal windows. Even with 256 colours it can
+;; lead to poor contrast.  Better would be to vary dimmer-fraction
+;; according to frame type.
+(when (display-graphic-p)
+  (require-package 'dimmer)
+  (setq-default dimmer-fraction 0.15)
+  (dimmer-mode)
+  (with-eval-after-load 'dimmer
+    (advice-add 'frame-set-background-mode :after (lambda (&rest args) (dimmer-process-all)))))
