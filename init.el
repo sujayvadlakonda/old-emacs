@@ -95,7 +95,7 @@
 (maybe-require-package 'nginx-mode)
 (require-init 'init-java)
 
-(require-init 'init-paredit)
+;; (require-init 'init-paredit)
 (require-init 'init-lisp)
 (require-init 'init-emacs-lisp)
 (require-init 'init-slime)
