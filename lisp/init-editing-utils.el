@@ -259,4 +259,9 @@ ORIG is the advised function, which is called with its ARGS."
 (setq visible-cursor nil)
 (blink-cursor-mode 0)
 
+(require-package 'beacon)
+(setq-default beacon-lighter "")
+(setq-default beacon-size 20)
+(add-hook 'after-init-hook 'beacon-mode)
+
 (require-init 'init-modal-editing)

@@ -9,11 +9,6 @@
 
 (define-key global-map (kbd "C-g") 'modalka-mode)
 
-(require-package 'beacon)
-(setq-default beacon-lighter "")
-(setq-default beacon-size 20)
-(add-hook 'after-init-hook 'beacon-mode)
-
 (with-eval-after-load 'modalka
   (define-key modalka-mode-map (kbd "i") 'modalka-mode)
   (define-key modalka-mode-map (kbd "C-g") 'keyboard-quit)
