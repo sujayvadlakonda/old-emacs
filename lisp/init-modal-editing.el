@@ -45,7 +45,7 @@
   (define-key modalka-mode-map (kbd "c") 'sujay/org-capture)
   (define-key modalka-mode-map (kbd "a") (lambda () (interactive)
                                            (if (and (boundp 'org-agenda-buffer)
-                                                    org-agenda-buffer)
+                                                    (buffer-live-p org-agenda-buffer))
                                                (switch-to-buffer org-agenda-buffer)
                                              (org-agenda nil "g"))))
   (define-key modalka-mode-map (kbd "t") 'org-todo)
