@@ -355,8 +355,10 @@ typical word processor."
       (sql . t)
       (sqlite . t)))))
 
-(require-package 'disable-mouse)
-(add-hook 'org-agenda-mode-hook 'disable-mouse-mode)
+;; Prevent mouse highlighting in agenda
+(add-hook 'org-agenda-finalize-hook
+          (lambda () (remove-text-properties
+                 (point-min) (point-max) '(mouse-face t))))
 
 (with-eval-after-load 'org-agenda
   ;; Unbinds org-save-all-org-buffers. Not useful w autosave.
