@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(set-frame-font "Fira Code")
+(set-frame-font "Source Code Pro")
 
 (require-package 'default-text-scale)
 (autoload 'default-text-scale-increment "default-text-scale")
