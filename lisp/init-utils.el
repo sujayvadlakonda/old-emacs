@@ -1,5 +1,3 @@
-(define-obsolete-function-alias 'after-load 'with-eval-after-load "")
-
 ;; Handier way to add modes to auto-mode-alist
 (defun add-auto-mode (mode &rest patterns)
   "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
