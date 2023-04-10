@@ -53,7 +53,6 @@
 
 ;; kill title bar
 (modify-frame-parameters nil '((undecorated . t)))
-(toggle-frame-maximized)
 
 ;; Non-zero values for `line-spacing' can mess up ansi-term and co,
 ;; so we zero it explicitly in those cases.
