@@ -3,8 +3,8 @@
 (require-package 'unfill)
 
 (when (fboundp 'electric-pair-mode)
-  (add-hook 'after-init-hook 'electric-pair-mode))
-(add-hook 'after-init-hook 'electric-indent-mode)
+  (electric-pair-mode))
+(electric-indent-mode)
 
 (maybe-require-package 'list-unicode-display)
 
@@ -28,20 +28,20 @@
  truncate-lines nil
  truncate-partial-width-windows nil)
 
-(add-hook 'after-init-hook 'delete-selection-mode)
+(delete-selection-mode)
 
-(add-hook 'after-init-hook 'global-auto-revert-mode)
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
+(global-auto-revert-mode)
 (with-eval-after-load 'autorevert
   (diminish 'auto-revert-mode))
 
-(add-hook 'after-init-hook 'transient-mark-mode)
+(transient-mark-mode)
 
 
 ;; Huge files
 (when (fboundp 'so-long-enable)
-  (add-hook 'after-init-hook 'so-long-enable))
+  (so-long-enable))
 
 (require-package 'vlf)
 
@@ -55,7 +55,7 @@
 
 ;;; A simple visible bell which works in all terminal types
 (require-package 'mode-line-bell)
-(add-hook 'after-init-hook 'mode-line-bell-mode)
+(mode-line-bell-mode)
 
 
 ;;; Newline behaviour
@@ -120,7 +120,7 @@
 
 
 ;; Show matching parens
-(add-hook 'after-init-hook 'show-paren-mode)
+(show-paren-mode)
 
 
 ;;; Handy key bindings
@@ -185,7 +185,7 @@
 
 ;;; Cut/copy the current line if no region is active
 (require-package 'whole-line-or-region)
-(add-hook 'after-init-hook 'whole-line-or-region-global-mode)
+(whole-line-or-region-global-mode)
 (with-eval-after-load 'whole-line-or-region
   (diminish 'whole-line-or-region-local-mode))
 
@@ -238,10 +238,10 @@ With arg N, insert N newlines."
 
 
 (require-package 'highlight-escape-sequences)
-(add-hook 'after-init-hook 'hes-mode)
+(hes-mode)
 
 (require-package 'which-key)
-(add-hook 'after-init-hook 'which-key-mode)
+(which-key-mode)
 (setq-default which-key-idle-delay 1.5)
 (with-eval-after-load 'which-key
   (diminish 'which-key-mode))
@@ -262,6 +262,6 @@ ORIG is the advised function, which is called with its ARGS."
 (require-package 'beacon)
 (setq-default beacon-lighter "")
 (setq-default beacon-size 20)
-(add-hook 'after-init-hook 'beacon-mode)
+(beacon-mode)
 
 (require-init 'init-modal-editing)

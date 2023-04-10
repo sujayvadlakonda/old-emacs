@@ -1,7 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (when (maybe-require-package 'vertico)
-  (add-hook 'after-init-hook 'vertico-mode)
+  (vertico-mode)
 
   (when (maybe-require-package 'embark)
     (with-eval-after-load 'vertico
@@ -45,8 +45,8 @@
 
     (maybe-require-package 'consult-flycheck)))
 
-(when (maybe-require-package 'marginalia)
-  (add-hook 'after-init-hook 'marginalia-mode))
+(require-package 'marginalia)
+(marginalia-mode)
 
 (defun minibuffer-backward-delete ()
   "Backward delete but by directories when possible."

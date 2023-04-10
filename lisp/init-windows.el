@@ -90,5 +90,5 @@ Call a second time to restore the original window configuration."
 
 (unless (memq window-system '(nt w32))
   (require-package 'windswap)
-  (add-hook 'after-init-hook (apply-partially 'windmove-default-keybindings 'control))
-  (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
+  (apply-partially 'windmove-default-keybindings 'control)
+  (apply-partially 'windswap-default-keybindings 'shift 'control))

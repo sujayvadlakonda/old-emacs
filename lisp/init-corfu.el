@@ -19,7 +19,7 @@
   (with-eval-after-load 'eshell
     (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil))))
   (setq-default corfu-quit-no-match 'separator)
-  (add-hook 'after-init-hook 'global-corfu-mode)
+  (global-corfu-mode)
 
   (when (featurep 'corfu-popupinfo)
     (with-eval-after-load 'corfu

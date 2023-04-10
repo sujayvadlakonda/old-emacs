@@ -8,7 +8,7 @@
 
 (when (maybe-require-package 'diff-hl)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (add-hook 'after-init-hook 'global-diff-hl-mode)
+  (global-diff-hl-mode)
 
   (with-eval-after-load 'diff-hl
     (define-key diff-hl-mode-map

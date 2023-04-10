@@ -130,19 +130,17 @@
 (maybe-require-package 'shfmt)
 (require-package 'titlecase)
 
-(when (maybe-require-package 'uptimes)
-  (setq-default uptimes-keep-count 200)
-  (add-hook 'after-init-hook (lambda () (require 'uptimes))))
+(require-package 'uptimes)
+(setq-default uptimes-keep-count 200)
+(require 'uptimes)
 
 (require-init 'init-direnv)
 (global-eldoc-mode -1)
 
 ;; Allow access from emacsclient
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'server)
-            (unless (server-running-p)
-              (server-start))))
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Locales (setting them earlier in this file doesn't work in X)
 (require-init 'init-locales)
