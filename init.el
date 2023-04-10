@@ -151,6 +151,3 @@
 (setq confirm-kill-processes nil)
 (setq kill-buffer-query-functions
       (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
-
-
-(provide 'init)
