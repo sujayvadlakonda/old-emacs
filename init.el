@@ -34,6 +34,7 @@
 (require-init 'init-frame-hooks)
 (require-init 'init-xterm)
 (require-init 'init-themes)
+(require-init 'init-font)
 (require-init 'init-osx-keys)
 (require-init 'init-gui-frames)
 (require-init 'init-dired)

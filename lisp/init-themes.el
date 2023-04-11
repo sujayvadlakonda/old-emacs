@@ -1,19 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-(set-frame-font "Source Code Pro")
-
-(require-package 'default-text-scale)
-(autoload 'default-text-scale-increment "default-text-scale")
-
-(defun default-text-scale-set (new-height)
-  "Set the default font size."
-  (interactive "nNew Height: ")
-  (let* ((current-height (face-attribute 'default :height))
-         (increment (- new-height current-height)))
-    (default-text-scale-increment increment)))
-
-(default-text-scale-set 200)
-
 ;; Don't prompt to confirm theme safety. This avoids problems with
 ;; first-time startup on Emacs > 26.3.
 (setq custom-safe-themes t)
