@@ -6,10 +6,10 @@
 
 (require-package 'modus-themes)
 
-(defvar day-theme 'modus-operandi)
-(defvar night-theme 'modus-vivendi)
-(defvar day-hour 7)
-(defvar night-hour 19)
+(defconst day-theme 'modus-operandi)
+(defconst night-theme 'modus-vivendi)
+(defconst day-hour 7)
+(defconst night-hour 19)
 
 (defun load-day-or-night-theme ()
   (mapc #'disable-theme custom-enabled-themes)
