@@ -19,6 +19,9 @@
 ;; `org-todo-keywords' is customised here to provide corresponding
 ;; TODO states, which should make sense to GTD adherents.
 
+(setq-default major-mode 'org-mode)
+(add-auto-mode 'org-mode "\\.txt")
+
 (setq org-agenda-files '("~/gtd/inbox.org"
                          "~/gtd/gtd.org"
                          "~/gtd/tickler.org"
@@ -181,7 +184,7 @@ typical word processor."
         `(,active-project-match ("NEXT")))
 
   (setq org-agenda-compact-blocks t
-        org-agenda-sticky nil
+        org-agenda-sticky t
         org-agenda-start-on-weekday nil
         org-agenda-span 'day
         org-agenda-include-diary nil
@@ -196,7 +199,7 @@ typical word processor."
            ((org-agenda-overriding-header "Notes")
             (org-tags-match-list-sublevels t)))
           ("g" "GTD"
-           ((agenda "" nil)
+           ((agenda "-TODO=\"DONE\"" nil)
             (tags "INBOX"
                   ((org-agenda-overriding-header "Inbox")
                    (org-tags-match-list-sublevels nil)))
@@ -265,49 +268,6 @@ typical word processor."
 
 ;;; Org clock
 
-;; Save the running clock and all clock history when exiting Emacs, load it on startup
-(with-eval-after-load 'org
-  (org-clock-persistence-insinuate))
-(setq org-clock-persist t)
-(setq org-clock-in-resume t)
-
-;; Save clock data and notes in the LOGBOOK drawer
-(setq org-clock-into-drawer t)
-;; Save state changes in the LOGBOOK drawer
-(setq org-log-into-drawer t)
-;; Removes clocked tasks with 0:00 duration
-(setq org-clock-out-remove-zero-time-clocks t)
-
-;; Show clock sums as hours and minutes, not "n days" etc.
-(setq org-time-clocksum-format
-      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
-
-
-;;; Show the clocked-in task - if any - in the header line
-(defun sanityinc/show-org-clock-in-header-line ()
-  (setq-default header-line-format '((" " org-mode-line-string " "))))
-
-(defun sanityinc/hide-org-clock-from-header-line ()
-  (setq-default header-line-format nil))
-
-(add-hook 'org-clock-in-hook 'sanityinc/show-org-clock-in-header-line)
-(add-hook 'org-clock-out-hook 'sanityinc/hide-org-clock-from-header-line)
-(add-hook 'org-clock-cancel-hook 'sanityinc/hide-org-clock-from-header-line)
-
-(with-eval-after-load 'org-clock
-  (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
-  (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu))
-
-
-(when (and *is-a-mac* (file-directory-p "/Applications/org-clock-statusbar.app"))
-  (add-hook 'org-clock-in-hook
-            (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                (concat "tell application \"org-clock-statusbar\" to clock in \"" org-clock-current-task "\""))))
-  (add-hook 'org-clock-out-hook
-            (lambda () (call-process "/usr/bin/osascript" nil 0 nil "-e"
-                                "tell application \"org-clock-statusbar\" to clock out"))))
-
-
 ;; TODO: warn about inconsistent items, e.g. TODO inside non-PROJECT
 ;; TODO: nested projects!
 
@@ -355,17 +315,24 @@ typical word processor."
       (sql . t)
       (sqlite . t)))))
 
-;; Prevent mouse highlighting in agenda
-(add-hook 'org-agenda-finalize-hook
-          (lambda () (remove-text-properties
-                 (point-min) (point-max) '(mouse-face t))))
 
 (with-eval-after-load 'org-agenda
+  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
+  (define-key org-agenda-mode-map (kbd "l") 'org-agenda-previous-line)
+
   ;; Unbinds org-save-all-org-buffers. Not useful w autosave.
   (define-key org-agenda-mode-map (kbd "s") 'org-agenda-schedule)
-  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-kill)
+  (define-key org-agenda-mode-map (kbd "d") 'org-agenda-kill)
+  (define-key org-agenda-mode-map (kbd "b") 'switch-to-buffer)
+  (define-key org-agenda-mode-map (kbd "c") 'sujay/org-capture)
+  (define-key org-agenda-mode-map (kbd "w") (lambda ()
+                                              (interactive)
+                                              (org-agenda nil "a")
+                                              (org-agenda-week-view)))
   (define-key org-agenda-mode-map (kbd "C-k") nil)
-  (define-key org-agenda-mode-map (kbd "y") nil))
+  (define-key org-agenda-mode-map (kbd "y") nil)
+  (define-key org-agenda-mode-map (kbd "o") 'other-window)
+  )
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
@@ -387,4 +354,16 @@ typical word processor."
 (with-eval-after-load 'org-capture
   (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
 
-(require-package 'org-modern)
+(setq org-cycle-emulate-tab 'white)
+
+(require-init 'init-org-clock)
+(require-init 'init-org-agenda)
+
+;; Separate into:
+;; org-mode
+;; org-clock
+;; org-capture
+;; org-agenda
+;; org-refile
+;; org-todo
+;; org-tags
