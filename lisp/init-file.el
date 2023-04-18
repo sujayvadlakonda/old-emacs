@@ -1,5 +1,9 @@
 ;; -*- lexical-binding: t -*-
 
+(setq-default create-lockfiles nil
+              auto-save-default nil
+              make-backup-files nil)
+
 (defun create-missing-directories ()
   "Create any missing directories of the visited file."
   (let ((target-directory (file-name-directory buffer-file-name)))
