@@ -16,3 +16,10 @@
     (default-text-scale-increment increment)))
 
 (default-text-scale-set 220)
+
+(require-package 'hydra)
+(defhydra font-hydra ()
+  "Easily adjust global font size."
+  ("j" default-text-scale-increase "Increase")
+  (";" default-text-scale-decrease "Decrease")
+  ("s" default-text-scale-set "Set"))
