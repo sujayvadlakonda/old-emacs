@@ -26,12 +26,6 @@
 
 (delete-selection-mode)
 
-(setq global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
-(global-auto-revert-mode)
-(with-eval-after-load 'autorevert
-  (diminish 'auto-revert-mode))
-
 (transient-mark-mode)
 
 

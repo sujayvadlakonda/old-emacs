@@ -115,7 +115,6 @@
 (require-init 'init-ledger)
 
 (require-init 'init-keyboard)
-(require-init 'init-auto-save)
 (require-init 'init-music)
 (require-init 'init-mode-line)
 (require-init 'init-abbrev)
