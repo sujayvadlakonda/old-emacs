@@ -1,5 +1,17 @@
 ;; -*- lexical-binding: t -*-
 
+(defvar sanityinc/org-global-prefix-map (make-sparse-keymap)
+  "A keymap for handy global access to org helpers, particularly clocking.")
+
+(define-key sanityinc/org-global-prefix-map (kbd "j") 'org-clock-goto)
+(define-key sanityinc/org-global-prefix-map (kbd "l") 'org-clock-in-last)
+(define-key sanityinc/org-global-prefix-map (kbd "i") 'org-clock-in)
+(define-key sanityinc/org-global-prefix-map (kbd "o") 'org-clock-out)
+(define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
+
+
+
+
 ;; Save the running clock and all clock history when exiting Emacs, load it on startup
 (with-eval-after-load 'org
   (org-clock-persistence-insinuate))
@@ -8,8 +20,6 @@
 
 ;; Save clock data and notes in the LOGBOOK drawer
 (setq org-clock-into-drawer t)
-;; Save state changes in the LOGBOOK drawer
-(setq org-log-into-drawer t)
 ;; Removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
 

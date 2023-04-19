@@ -51,8 +51,9 @@
 (global-set-key (kbd "M-C-9") (lambda () (interactive) (sanityinc/adjust-opacity nil 2)))
 (global-set-key (kbd "M-C-7") (lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
 
-;; kill title bar
-(modify-frame-parameters nil '((undecorated . t)))
+(modify-frame-parameters nil '((undecorated . t) ;; no title bar
+                               (fullscreen . maximized) ;; always full screen
+                               ))
 
 ;; Non-zero values for `line-spacing' can mess up ansi-term and co,
 ;; so we zero it explicitly in those cases.

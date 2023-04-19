@@ -92,3 +92,19 @@ Call a second time to restore the original window configuration."
   (require-package 'windswap)
   (apply-partially 'windmove-default-keybindings 'control)
   (apply-partially 'windswap-default-keybindings 'shift 'control))
+
+;; Source: https://github.com/jwiegley/dot-emacs/
+(defvar saved-window-configuration nil)
+
+(defun push-window-configuration ()
+  (interactive)
+  (push (current-window-configuration) saved-window-configuration))
+
+(defun pop-window-configuration ()
+  (interactive)
+  (let ((config (pop saved-window-configuration)))
+    (if config
+        (set-window-configuration config)
+      (if (> (length (window-list)) 1)
+          (delete-window)
+        (bury-buffer)))))

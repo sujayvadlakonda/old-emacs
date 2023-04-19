@@ -10,7 +10,6 @@
 
 ;;; Some basic preferences
 (setq-default
- blink-cursor-interval 0.4
  bookmark-default-file (locate-user-emacs-file ".bookmarks.el")
  buffers-menu-max-size 30
  case-fold-search t
@@ -253,8 +252,9 @@ ORIG is the advised function, which is called with its ARGS."
 
 (advice-add 'kmacro-call-macro :around 'sanityinc/disable-features-during-macro-call)
 
-(setq visible-cursor nil)
 (blink-cursor-mode 0)
+(setq visible-cursor nil)
+(setq-default cursor-in-non-selected-windows nil)
 
 (require-package 'beacon)
 (setq-default beacon-lighter "")

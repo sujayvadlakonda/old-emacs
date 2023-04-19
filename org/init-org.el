@@ -19,15 +19,24 @@
 ;; `org-todo-keywords' is customised here to provide corresponding
 ;; TODO states, which should make sense to GTD adherents.
 
+(defun increment-medicine ()
+  "Increment text in the form '[1/2] Medicine_Name 2257'"
+  (interactive)
+  (back-to-indentation)
+  (forward-char 2)
+  (insert " ")
+  (backward-char 2)
+  (org-increase-number-at-point)
+  (delete-char 1)
+  (forward-word 2)
+  (kill-line)
+  (insert " ")
+  (insert (format-time-string "%H%M" (current-time))))
+
 (setq-default major-mode 'org-mode)
 (add-auto-mode 'org-mode "\\.txt")
 
-(setq org-agenda-files '("~/gtd/inbox.org"
-                         "~/gtd/gtd.org"
-                         "~/gtd/tickler.org"
-                         "~/gtd/hygiene.org"
-                         "~/gtd/school.org")
-      org-default-notes-file "~/gtd/inbox.org")
+(setq org-default-notes-file "~/gtd/inbox.org")
 
 (when *is-a-mac*
   (maybe-require-package 'grab-mac-link))
@@ -35,17 +44,6 @@
 (maybe-require-package 'org-cliplink)
 
 (define-key global-map (kbd "C-c l") 'org-store-link)
-(define-key global-map (kbd "C-c a") 'org-agenda)
-
-(defvar sanityinc/org-global-prefix-map (make-sparse-keymap)
-  "A keymap for handy global access to org helpers, particularly clocking.")
-
-(define-key sanityinc/org-global-prefix-map (kbd "j") 'org-clock-goto)
-(define-key sanityinc/org-global-prefix-map (kbd "l") 'org-clock-in-last)
-(define-key sanityinc/org-global-prefix-map (kbd "i") 'org-clock-in)
-(define-key sanityinc/org-global-prefix-map (kbd "o") 'org-clock-out)
-(define-key global-map (kbd "C-c o") sanityinc/org-global-prefix-map)
-
 
 ;; Various preferences
 (setq org-log-done nil
@@ -60,13 +58,6 @@
 
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
-
-;; Re-align tags when window shape changes
-(with-eval-after-load 'org-agenda
-  (add-hook 'org-agenda-mode-hook
-            (lambda () (add-hook 'window-configuration-change-hook 'org-agenda-align-tags nil t))))
-
-
 
 (maybe-require-package 'writeroom-mode)
 
@@ -117,7 +108,7 @@ typical word processor."
 
 (setq org-capture-templates
       `(("t" "todo" entry (file "")     ; "" => `org-default-notes-file'
-         "* NEXT %?\n" :clock-resume t)
+         "* TODO %?\n" :clock-resume t)
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
         ))
@@ -125,6 +116,8 @@ typical word processor."
 
 ;;; Refiling
 (setq org-refile-use-cache nil)
+
+(setq org-refile-use-outline-path 'file)
 
 ;; Targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets '((nil :maxlevel . 5)
@@ -155,8 +148,8 @@ typical word processor."
     (org-agenda-refile goto rfloc no-update)))
 
 ;; Targets start with the file name - allows creating level 1 tasks
-;;(setq org-refile-use-outline-path (quote file))
-(setq org-refile-use-outline-path t)
+(setq org-refile-use-outline-path (quote file))
+;; (setq org-refile-use-outline-pth t)
 (setq org-outline-path-complete-in-steps nil)
 
 ;; Allow refile to create parent tasks with confirmation
@@ -256,9 +249,6 @@ typical word processor."
                         (org-tags-match-list-sublevels nil)
                         (org-agenda-sorting-strategy
                          '(category-keep))))
-            ;; (tags-todo "-NEXT"
-            ;;            ((org-agenda-overriding-header "All other TODOs")
-            ;;             (org-match-list-sublevels t)))
             )))))
 
 
@@ -266,17 +256,9 @@ typical word processor."
 (add-hook 'org-agenda-mode-hook (lambda ()
                                   (setq-local cursor-type nil)))
 
-;;; Org clock
-
-;; TODO: warn about inconsistent items, e.g. TODO inside non-PROJECT
-;; TODO: nested projects!
-
-
 ;;; Archiving
 (setq org-archive-mark-done nil)
 (setq org-archive-location "%s_archive::* Archive")
-
-
 
 (require-package 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)
@@ -289,32 +271,6 @@ typical word processor."
   (when *is-a-mac*
     (define-key org-mode-map (kbd "M-h") nil)
     (define-key org-mode-map (kbd "C-c g") 'grab-mac-link)))
-
-(with-eval-after-load 'org
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   (seq-filter
-    (lambda (pair)
-      (locate-library (concat "ob-" (symbol-name (car pair)))))
-    '((R . t)
-      (ditaa . t)
-      (dot . t)
-      (emacs-lisp . t)
-      (gnuplot . t)
-      (haskell . nil)
-      (latex . t)
-      (ledger . t)
-      (ocaml . nil)
-      (octave . t)
-      (plantuml . t)
-      (python . t)
-      (ruby . t)
-      (screen . nil)
-      (sh . t) ;; obsolete
-      (shell . t)
-      (sql . t)
-      (sqlite . t)))))
-
 
 (with-eval-after-load 'org-agenda
   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
@@ -356,14 +312,6 @@ typical word processor."
 
 (setq org-cycle-emulate-tab 'white)
 
+(require-init 'init-org-mode)
 (require-init 'init-org-clock)
 (require-init 'init-org-agenda)
-
-;; Separate into:
-;; org-mode
-;; org-clock
-;; org-capture
-;; org-agenda
-;; org-refile
-;; org-todo
-;; org-tags

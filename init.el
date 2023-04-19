@@ -3,7 +3,7 @@
 (setq debug-on-error nil)
 
 (defun require-init (feature)
-  "Require features without provide"
+  "`require' FEATURE without `provide'"
   (unless (featurep feature)
     (load (symbol-name feature))
     (provide feature)))
