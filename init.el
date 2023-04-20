@@ -54,7 +54,7 @@
 (require-init 'init-sessions)
 (require-init 'init-mmm)
 
-(require-init 'init-editing-utils)
+(require-init 'init-edit)
 (require-init 'init-whitespace)
 
 (require-init 'init-vc)
