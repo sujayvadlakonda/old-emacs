@@ -21,7 +21,6 @@
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold (* 20 1024 1024))))
 
-(setq custom-file null-device)
 (require-init 'init-utils)
 (require-init 'init-site-lisp)
 (require-init 'init-package)
