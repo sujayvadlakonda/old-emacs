@@ -9,7 +9,7 @@
 
 
 ;;; Embedding in html
-(require-package 'mmm-mode)
+(require-init 'init-mmm)
 (with-eval-after-load 'mmm-vars
   (mmm-add-group
    'html-css

@@ -36,7 +36,8 @@
 (require-init 'init-xterm)
 (require-init 'init-themes)
 (require-init 'init-font)
-(require-init 'init-osx-keys)
+(when (eq system-type 'darwin)
+  (require-init 'init-osx-keys))
 (require-init 'init-gui-frames)
 (require-init 'init-dired)
 (require-init 'init-isearch)
@@ -52,7 +53,6 @@
 (require-init 'init-corfu)
 (require-init 'init-windows)
 (require-init 'init-sessions)
-(require-init 'init-mmm)
 
 (require-init 'init-edit)
 (require-init 'init-whitespace)

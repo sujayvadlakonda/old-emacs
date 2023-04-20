@@ -77,7 +77,7 @@
 
 
 ;;; ERB
-(require-package 'mmm-mode)
+(require-init 'init-mmm)
 
 (require 'derived)
 
