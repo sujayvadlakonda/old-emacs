@@ -1,0 +1,22 @@
+* Standing on the shoulders of giants
+Purcell has been configuring Emacs longer than I've been alive.
+Features that I discover he tested 11 years ago.
+All the cool code in the hundreds of configs that exist for me to explore, Purcell has already seen.
+* Do not reinvent the wheel
+The goal is to use Emacs, not to configure it.
+Do not refactor code that works.
+Do not create personal Emacs Lisp DSL macros.
+Do not mess with package manager without concrete reason.
+Do not make your own naming conventions.
+Do not invent new ways of requiring features.
+Do not move around dependency arrangement.
+Do not rename modules.
+Do not play with the folder structure.
+Do not aimlessly dig around the internet for cool code.
+* What to do?
+Solve real problems.
+Tackle the most critical issue you see.
+Make changes after understanding why the current setup exists.
+* Sources
+- [[https://github.com/purcell/emacs.d][Steve Purcell's Emacs config]]
+- [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide][Chen Bin's Emacs guide]]
