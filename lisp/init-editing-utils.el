@@ -292,6 +292,11 @@ ORIG is the advised function, which is called with its ARGS."
 
 (advice-add 'kmacro-call-macro :around 'sanityinc/disable-features-during-macro-call)
 
+
+;; My keyboard doesn't have a backspace key. So I defined some replacements.
+(define-key key-translation-map (kbd "C-h") (kbd "DEL"))
+(define-key key-translation-map (kbd "C-M-h") (kbd "C-M-<backspace>"))
+
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
