@@ -50,5 +50,14 @@
   (add-hook 'after-init-hook 'marginalia-mode))
 
 
+(defun find-file-create-missing-directories ()
+  "Create any missing directories of the visited file."
+  (let ((target-directory (file-name-directory buffer-file-name)))
+    (unless (file-exists-p target-directory)
+      (make-directory target-directory t))))
+
+(add-to-list 'find-file-not-found-functions #'find-file-create-missing-directories)
+
+
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
