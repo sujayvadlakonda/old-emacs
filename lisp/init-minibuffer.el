@@ -57,5 +57,18 @@
 (add-to-list 'find-file-not-found-functions #'find-file-create-missing-directories)
 
 
+(defun minibuffer-backward-delete ()
+  "Backward delete but by directories when possible."
+  (interactive)
+  (if (eq ?/ (char-before))
+      (ignore-errors
+        (backward-delete-char 1)
+        (while (not (eq ?/ (char-before)))
+          (backward-delete-char 1)))
+    (backward-delete-char 1)))
+
+(define-key minibuffer-mode-map (kbd "DEL") 'minibuffer-backward-delete)
+
+
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
