@@ -5,7 +5,7 @@
 (setq-default debugger-bury-or-kill 'kill)
 
 (require-package 'elisp-slime-nav)
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook help-mode-hook))
   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
 
