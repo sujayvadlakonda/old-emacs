@@ -4,7 +4,8 @@ Features that I discover he tested 11 years ago.
 All the cool code in the hundreds of configs that exist for me to explore, Purcell has already seen.
 * Do not reinvent the wheel
 The goal is to use Emacs, not to configure it.
-Do not refactor code that works.
+Do not refactor code.
+Do not OCD commit mangle.
 Do not create personal Emacs Lisp DSL macros.
 Do not mess with package manager without concrete reason.
 Do not make your own naming conventions.
