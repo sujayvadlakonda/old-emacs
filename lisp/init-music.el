@@ -12,9 +12,9 @@
     "Play a song on loop."
     (interactive
      (list (read-file-name "Pick a song: " sujay/music-directory)))
-    (mpv-volume-set 75)
     (mpv-play path)
-    (mpv-set-property "loop-file" "inf")))
+    (mpv-set-property "loop-file" "inf")
+    (mpv-volume-set 75)))
 
 
 (when (executable-find "youtube-dl")
