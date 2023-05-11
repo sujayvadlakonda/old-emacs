@@ -152,6 +152,7 @@
 (when (fboundp 'global-eldoc-mode)
   (add-hook 'after-init-hook 'global-eldoc-mode))
 
+(require 'init-music)
 (require 'init-direnv)
 
 
