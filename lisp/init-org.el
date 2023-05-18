@@ -394,6 +394,130 @@ typical word processor."
       (sql . t)
       (sqlite . t)))))
 
+;; Variable width fonts work garbage with meow-expand
+;; I don't use variable width fonts in org-mode
+(remove! 'org-mode 'meow-expand-exclude-mode-list)
+
+;; Absolute hack to make [6/5 appear green
+(defun org-get-checkbox-statistics-face ()
+  "Select the face for checkbox statistics.
+The face will be `org-done' when all relevant boxes are checked.
+Otherwise it will be `org-todo'."
+  (if (match-end 1)
+      (if (equal (match-string 1) "100%")
+          'org-checkbox-statistics-done
+        'org-checkbox-statistics-todo)
+    (if (and (> (match-end 2) (match-beginning 2))
+             (or (string> (match-string 2) (match-string 3))
+                 (string= (match-string 2) (match-string 3))))
+        'org-checkbox-statistics-done
+      'org-checkbox-statistics-todo)))
+
+
+(add-hook 'org-mode-hook 'abbrev-mode)
+(define-global-abbrev "w" "with")
+(define-global-abbrev "bc" "because")
+(define-global-abbrev "sys" "system")
+
+(defun increment-medicine ()
+  "Increment text in the form '[1/2] Medicine_Name 2257'"
+  (interactive)
+  (back-to-indentation)
+  (forward-char 2)
+  (insert " ")
+  (backward-char 2)
+  (org-increase-number-at-point)
+  (delete-char 1)
+  (move-end-of-line 1)
+  (backward-word 1)
+  (backward-char 1)
+  (kill-line)
+  (insert " ")
+  (insert (format-time-string "%H%M" (current-time))))
+
+
+(defvar sujay/org-agenda-buffer nil
+  "Buffer that has my GTD agenda.")
+
+(defun sujay/org-agenda ()
+  "If agenda buffer exists, switch to it and refresh.  Else create new."
+  (interactive)
+  (if (buffer-live-p sujay/org-agenda-buffer)
+      (progn
+        (switch-to-buffer sujay/org-agenda-buffer)
+        (org-agenda-redo))
+    (org-agenda nil "GTD")
+    (setq sujay/org-agenda-buffer (current-buffer))))
+
+(setq org-agenda-files '("~/gtd/inbox.org"
+                         "~/gtd/gtd.org"
+                         "~/gtd/tickler.org"
+                         "~/gtd/hygiene.org"))
+
+
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
+
+(setq org-agenda-custom-commands
+      '(("GTD" "GTD"
+         ((todo "TODO"
+                ((org-agenda-overriding-header "Next Actions")
+                 (org-agenda-todo-ignore-scheduled 'future)
+                 (org-agenda-todo-ignore-time-comparison-use-seconds t)
+                 (org-agenda-skip-function #'next-actions-skip-function)))
+          (todo "WAITING"
+                ((org-agenda-overriding-header "Waiting")))))))
+
+(defun next-actions-skip-function ()
+  (let ((is-top-level (eq 1 (org-current-level)))
+        (should-skip nil))
+    (unless is-top-level
+      (save-excursion
+        (while (and (not should-skip)
+                    (org-goto-sibling :previous))
+          (when (or (string= "TODO" (org-get-todo-state))
+                    (string= "WAITING" (org-get-todo-state)))
+            (setq should-skip t)))))
+    (when should-skip
+      (while (org-goto-sibling))
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
+
+(add-to-list 'org-refile-targets '("~/gtd/someday.org" :maxlevel . 5))
+
+;; This is for refiling to level one stars
+(setq org-refile-use-outline-path 'file)
+
+(setq org-capture-templates
+      `(("t" "todo" entry (file "")     ; "" => `org-default-notes-file'
+         "* TODO %?\n" :clock-resume t)
+        ("n" "note" entry (file "")
+         "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
+        ))
+
+(defun sujay/org-capture ()
+  "Capture a todo into the inbox."
+  (interactive)
+  (org-capture nil "t")
+  (when (featurep 'meow)
+    (meow-insert)))
+
+(define-key global-map (kbd "C-c c") #'sujay/org-capture)
+
+(defun sujay/org-capture-finalize ()
+  (interactive)
+  (org-capture-finalize)
+  (when (fboundp 'org-agenda-redo-all)
+    (save-window-excursion
+      (org-agenda-redo-all t))))
+
+(with-eval-after-load 'org-capture
+  (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
+
+(setq org-default-notes-file "~/gtd/inbox.org")
+
+(global-set-key (kbd "C-c a") #'sujay/org-agenda)
+
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
