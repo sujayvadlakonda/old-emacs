@@ -392,6 +392,20 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key meow-insert-state-keymap (kbd "C-g") 'meow-insert-exit)
 (meow-global-mode 1)
 
+(define-key global-map (kbd "C-c o") 'switch-window)
+(define-key global-map (kbd "C-c 0") 'delete-window)
+(define-key global-map (kbd "C-c 1") 'sanityinc/toggle-delete-other-windows)
+(define-key global-map (kbd "C-c 2")
+  (split-window-func-with-other-buffer 'split-window-vertically))
+(define-key global-map (kbd "C-c 3")
+  (split-window-func-with-other-buffer 'split-window-horizontally))
+(define-key global-map (kbd "C-c 0") 'delete-window)
+(define-key global-map (kbd "C-c 0") 'delete-window)
+(define-key global-map (kbd "C-c c") 'sujay/org-capture)
+(define-key global-map (kbd "C-c b") 'consult-buffer)
+(define-key global-map (kbd "C-c s") 'save-buffer)
+
+(require-package 'helpful)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
