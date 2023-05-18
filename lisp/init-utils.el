@@ -76,6 +76,17 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
+
+;; Remove an element from a list safely
+
+(defun remove! (element sequence)
+  "Remove ELEMENT from value bound to symbol SEQUENCE."
+  (unless (symbolp sequence)
+    (error "SEQUENCE should be a quoted symbol"))
+  (when (boundp sequence)
+    (setq sequence
+          (remove element (eval sequence)))))
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
