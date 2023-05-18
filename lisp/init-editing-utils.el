@@ -31,7 +31,10 @@
  set-mark-command-repeat-pop t
  tooltip-delay 1.5
  truncate-lines nil
- truncate-partial-width-windows nil)
+ truncate-partial-width-windows nil
+ echo-keystrokes 1e-9
+ cursor-in-non-selected-windows nil)
+
 
 (add-hook 'after-init-hook 'delete-selection-mode)
 
