@@ -40,7 +40,7 @@
 
 
 (when (maybe-require-package 'dimmer)
-  (setq-default dimmer-fraction 0.15)
+  (setq-default dimmer-fraction 0.00)
   (add-hook 'after-init-hook 'dimmer-mode)
   (with-eval-after-load 'dimmer
     ;; TODO: file upstream as a PR
