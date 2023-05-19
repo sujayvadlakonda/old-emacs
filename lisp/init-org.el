@@ -496,8 +496,6 @@ Otherwise it will be `org-todo'."
   (when (featurep 'meow)
     (meow-insert)))
 
-(define-key global-map (kbd "C-c c") #'sujay/org-capture)
-
 (defun sujay/org-capture-finalize ()
   (interactive)
   (org-capture-finalize)
@@ -510,8 +508,9 @@ Otherwise it will be `org-todo'."
 
 (setq org-default-notes-file "~/gtd/inbox.org")
 
-(global-set-key (kbd "C-c a") #'sujay/org-agenda)
 
+(define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
+(define-key org-agenda-mode-map (kbd "l") 'org-agenda-previous-line)
 
 
 (provide 'init-org)

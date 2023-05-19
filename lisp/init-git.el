@@ -37,7 +37,10 @@
 
 
 (with-eval-after-load 'magit
-  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
+  (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up)
+  (define-key magit-status-mode-map (kbd "k") 'magit-next-line)
+  (define-key magit-status-mode-map (kbd "l") 'magit-previous-line)
+  )
 
 (maybe-require-package 'magit-todos)
 
