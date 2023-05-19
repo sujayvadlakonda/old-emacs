@@ -39,11 +39,11 @@
   (add-to-list 'default-frame-alist no-border)
   (add-to-list 'initial-frame-alist no-border))
 
-(add-to-list 'default-frame-alist '(undecorated . t))
-(add-to-list 'initial-frame-alist '(undecorated . t))
+;; (add-to-list 'default-frame-alist '(undecorated . t))
+;; (add-to-list 'initial-frame-alist '(undecorated . t))
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (defun sanityinc/adjust-opacity (frame incr)
   "Adjust the background opacity of FRAME by increment INCR."
