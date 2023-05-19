@@ -72,7 +72,9 @@
 
 
 
-(maybe-require-package 'writeroom-mode)
+(require-package 'writeroom-mode)
+(setq writeroom-maximize-window nil)
+(setq writeroom-fullscreen-effect 'maximized)
 
 (define-minor-mode prose-mode
   "Set up a buffer for prose editing.
@@ -86,11 +88,9 @@ typical word processor."
           (writeroom-mode 1))
         (setq truncate-lines nil)
         (setq word-wrap t)
-        (setq cursor-type 'bar)
         (when (eq major-mode 'org)
           (kill-local-variable 'buffer-face-mode-face))
         (buffer-face-mode 1)
-        ;;(delete-selection-mode 1)
         (setq-local blink-cursor-interval 0.6)
         (setq-local show-trailing-whitespace nil)
         (setq-local line-spacing 0.2)
@@ -99,20 +99,15 @@ typical word processor."
         (visual-line-mode 1))
     (kill-local-variable 'truncate-lines)
     (kill-local-variable 'word-wrap)
-    (kill-local-variable 'cursor-type)
     (kill-local-variable 'blink-cursor-interval)
     (kill-local-variable 'show-trailing-whitespace)
     (kill-local-variable 'line-spacing)
     (kill-local-variable 'electric-pair-mode)
     (buffer-face-mode -1)
-    ;; (delete-selection-mode -1)
     (flyspell-mode -1)
     (visual-line-mode -1)
     (when (fboundp 'writeroom-mode)
       (writeroom-mode 0))))
-
-;;(add-hook 'org-mode-hook 'buffer-face-mode)
-
 
 (setq org-support-shift-select t)
 
