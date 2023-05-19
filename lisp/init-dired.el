@@ -20,7 +20,9 @@
 (with-eval-after-load 'dired
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
-  (define-key dired-mode-map (kbd "C-c C-q") 'wdired-change-to-wdired-mode))
+  (define-key dired-mode-map (kbd "C-c C-q") 'wdired-change-to-wdired-mode)
+  (define-key dired-mode-map (kbd "k") 'dired-next-line)
+  (define-key dired-mode-map (kbd "l") 'dired-previous-line))
 
 (when (maybe-require-package 'diff-hl)
   (with-eval-after-load 'dired
