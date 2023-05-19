@@ -328,6 +328,8 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key sujay/leader-map (kbd "s") 'save-buffer)
 
 (define-key sujay/leader-map (kbd "0") 'delete-window)
+(define-key sujay/leader-map (kbd "2") (split-window-func-with-other-buffer 'split-window-vertically))
+(define-key sujay/leader-map (kbd "3") (split-window-func-with-other-buffer 'split-window-horizontally))
 (define-key sujay/leader-map (kbd "o") 'switch-window)
 
 (define-key sujay/leader-map (kbd "a") 'sujay/org-agenda)
