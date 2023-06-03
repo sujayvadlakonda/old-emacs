@@ -14,7 +14,6 @@
 ;;; Some basic preferences
 
 (setq-default
- blink-cursor-interval 0.4
  bookmark-default-file (locate-user-emacs-file ".bookmarks.el")
  buffers-menu-max-size 30
  case-fold-search t
@@ -338,6 +337,9 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key sujay/leader-map (kbd "g") 'magit)
 (define-key sujay/leader-map (kbd "B") 'ibuffer)
 
+
+(blink-cursor-mode -1)
+(setq visible-cursor nil)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
