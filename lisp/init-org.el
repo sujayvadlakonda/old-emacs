@@ -334,7 +334,10 @@ typical word processor."
 (require-package 'org-pomodoro)
 (setq org-pomodoro-keep-killed-pomodoro-time t)
 (with-eval-after-load 'org-agenda
-  (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro))
+  (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
+  (define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
+  (define-key org-agenda-mode-map (kbd "l") 'org-agenda-previous-line)
+  (define-key org-agenda-mode-map (kbd "c") 'sujay/org-capture))
 
 
 ;; ;; Show iCal calendars in the org agenda
@@ -507,10 +510,6 @@ Otherwise it will be `org-todo'."
   (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
 
 (setq org-default-notes-file "~/gtd/inbox.org")
-
-
-(define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
-(define-key org-agenda-mode-map (kbd "l") 'org-agenda-previous-line)
 
 
 (provide 'init-org)
