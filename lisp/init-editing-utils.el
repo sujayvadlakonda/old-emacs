@@ -323,10 +323,12 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key sujay/normal-map (kbd "SPC") sujay/leader-map)
 
 (define-key sujay/leader-map (kbd "b") 'consult-buffer)
+(define-key sujay/leader-map (kbd "f") 'find-file)
 
 (define-key sujay/leader-map (kbd "s") 'save-buffer)
 
 (define-key sujay/leader-map (kbd "0") 'delete-window)
+(define-key sujay/leader-map (kbd "1") 'sanityinc/toggle-delete-other-windows)
 (define-key sujay/leader-map (kbd "2") (split-window-func-with-other-buffer 'split-window-vertically))
 (define-key sujay/leader-map (kbd "3") (split-window-func-with-other-buffer 'split-window-horizontally))
 (define-key sujay/leader-map (kbd "o") 'switch-window)
@@ -337,6 +339,7 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key sujay/leader-map (kbd "g") 'magit)
 (define-key sujay/leader-map (kbd "B") 'ibuffer)
 
+(define-key sujay/leader-map (kbd "k") 'kill-this-buffer)
 
 (blink-cursor-mode -1)
 (setq visible-cursor nil)
