@@ -301,26 +301,63 @@ ORIG is the advised function, which is called with its ARGS."
 
 
 ;; Modal editing
-(defvar sujay/normal-map (make-sparse-keymap))
-(define-minor-mode sujay/modal-editing-mode ""
-  :init-value nil :keymap sujay/normal-map)
+(require-package 'meow)
 
-(define-key global-map (kbd "C-g") 'sujay/modal-editing-mode)
-(define-key sujay/normal-map (kbd "C-g") 'keyboard-quit)
-(define-key sujay/normal-map (kbd "i") 'sujay/modal-editing-mode)
+(defun meow-setup ()
+  (meow-normal-define-key
+   '("j" . meow-left)
+   '("k" . meow-next)
+   '("l" . meow-prev)
+   '(";" . meow-right)
 
-(define-key sujay/normal-map (kbd "j") 'backward-char)
-(define-key sujay/normal-map (kbd "k") 'next-line)
-(define-key sujay/normal-map (kbd "l") 'previous-line)
-(define-key sujay/normal-map (kbd ";") 'forward-char)
+   '("d" . meow-delete)
+   '("s" . whole-line-or-region-kill-region)
+   '("y" . whole-line-or-region-kill-ring-save)
+   '("p" . meow-yank)
 
-(define-key sujay/normal-map (kbd "y") 'kill-ring-save)
-(define-key sujay/normal-map (kbd "p") 'yank)
+   '("u" . meow-undo)
 
-(define-key sujay/normal-map (kbd "u") 'undo)
+   '("x" . meow-line)
+   '("w" . meow-next-word)
+   '("b" . meow-back-word)
+   
+   '("0" . meow-expand-0)
+   '("9" . meow-expand-9)
+   '("8" . meow-expand-8)
+   '("7" . meow-expand-7)
+   '("6" . meow-expand-6)
+   '("5" . meow-expand-5)
+   '("4" . meow-expand-4)
+   '("3" . meow-expand-3)
+   '("2" . meow-expand-2)
+   '("1" . meow-expand-1))
+  
+  (defvar sujay/leader-map (make-sparse-keymap))
+  (meow-normal-define-key
+   (cons "SPC" sujay/leader-map))
+  (meow-motion-overwrite-define-key
+   (cons "SPC" sujay/leader-map)))
 
-(defvar sujay/leader-map (make-sparse-keymap))
-(define-key sujay/normal-map (kbd "SPC") sujay/leader-map)
+(require 'meow)
+(meow-setup)
+(meow-global-mode 1)
+;; (defvar sujay/normal-map (make-sparse-keymap))
+;; (define-minor-mode sujay/modal-editing-mode ""
+;;   :init-value nil :keymap sujay/normal-map)
+
+;; (define-key global-map (kbd "C-g") 'sujay/modal-editing-mode)
+;; (define-key sujay/normal-map (kbd "C-g") 'keyboard-quit)
+;; (define-key sujay/normal-map (kbd "i") 'sujay/modal-editing-mode)
+
+;; (define-key sujay/normal-map (kbd "j") 'backward-char)
+;; (define-key sujay/normal-map (kbd "k") 'next-line)
+;; (define-key sujay/normal-map (kbd "l") 'previous-line)
+;; (define-key sujay/normal-map (kbd ";") 'forward-char)
+
+;; (define-key sujay/normal-map (kbd "y") 'kill-ring-save)
+;; (define-key sujay/normal-map (kbd "p") 'yank)
+
+;; (define-key sujay/normal-map (kbd "u") 'undo)
 
 (define-key sujay/leader-map (kbd "b") 'consult-buffer)
 (define-key sujay/leader-map (kbd "f") 'find-file)
