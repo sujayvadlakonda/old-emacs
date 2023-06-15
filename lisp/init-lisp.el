@@ -4,28 +4,9 @@
 
 (setq-default debugger-bury-or-kill 'kill)
 
-(require-package 'elisp-slime-nav)
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook help-mode-hook))
-  (add-hook hook 'turn-on-elisp-slime-nav-mode))
-(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "ELisp")))
-
 (setq-default initial-scratch-message
               ";; God's Blessing on this Wonderful World!\n\n")
 
-
-(defun sanityinc/headerise-elisp ()
-  "Add minimal header and footer to an elisp buffer in order to placate flycheck."
-  (interactive)
-  (let ((fname (if (buffer-file-name)
-                   (file-name-nondirectory (buffer-file-name))
-                 (error "This buffer is not visiting a file"))))
-    (save-excursion
-      (goto-char (point-min))
-      (insert ";;; " fname " --- Insert description here -*- lexical-binding: t -*-\n"
-              ";;; Commentary:\n"
-              ";;; Code:\n\n")
-      (goto-char (point-max))
-      (insert ";;; " fname " ends here\n"))))
 
 
 ;; Make C-x C-e run 'eval-region if the region is active
@@ -268,11 +249,6 @@ there is no current file, eval the current buffer."
 
 (when (maybe-require-package 'highlight-quoted)
   (add-hook 'emacs-lisp-mode-hook 'highlight-quoted-mode))
-
-
-(when (maybe-require-package 'package-lint-flymake)
-  (add-hook 'emacs-lisp-mode-hook #'package-lint-flymake-setup))
-
 
 
 ;; ERT
