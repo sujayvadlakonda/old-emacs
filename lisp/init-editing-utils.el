@@ -32,8 +32,7 @@
  truncate-lines nil
  truncate-partial-width-windows nil
  echo-keystrokes 1e-9
- cursor-in-non-selected-windows nil
- mode-line-format nil)
+ cursor-in-non-selected-windows nil)
 
 (add-hook 'after-init-hook 'delete-selection-mode)
 

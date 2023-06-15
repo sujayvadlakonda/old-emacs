@@ -155,6 +155,8 @@
 (require 'init-music)
 (require 'init-direnv)
 
+(require 'init-mode-line)
+
 
 
 ;; Allow access from emacsclient
