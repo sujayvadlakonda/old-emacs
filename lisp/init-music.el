@@ -17,11 +17,16 @@
     (mpv-volume-set 75)))
 
 
-(when (executable-find "youtube-dl")
+(when (or (executable-find "youtube-dl")
+          (executable-find "yt-dlp"))
   (require-package 'ytdl)
   (setq ytdl-music-folder sujay/music-directory
         ytdl-music-extra-args '("-x" "--audio-format" "best" "--audio-quality" "0")
         ytdl-always-query-default-filename 'never))
+
+(when (executable-find "yt-dlp")
+  (setq ytdl-command "yt-dlp"))
+
 
 (provide 'init-music)
 ;;; init-music.el ends here
