@@ -416,6 +416,8 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "w" "with")
 (define-global-abbrev "bc" "because")
 (define-global-abbrev "sys" "system")
+(define-global-abbrev "kbd" "keyboard")
+(define-global-abbrev "inv" "investigate")
 
 (defun increment-medicine ()
   "Increment text in the form '[1/2] Medicine_Name 2257'"
