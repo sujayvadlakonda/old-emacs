@@ -324,8 +324,11 @@ ORIG is the advised function, which is called with its ARGS."
    '("u" . meow-undo)
 
    '("x" . meow-line)
-   '("w" . meow-next-word)
+   '("w" . meow-mark-word)
+   '("e" . meow-next-word)
    '("b" . meow-back-word)
+
+   '("c" . meow-change)
    
    '("0" . meow-expand-0)
    '("9" . meow-expand-9)
@@ -336,7 +339,9 @@ ORIG is the advised function, which is called with its ARGS."
    '("4" . meow-expand-4)
    '("3" . meow-expand-3)
    '("2" . meow-expand-2)
-   '("1" . meow-expand-1))
+   '("1" . meow-expand-1)
+
+   '("z" . execute-extended-command))
   
   (defvar sujay/leader-map (make-sparse-keymap))
   (meow-normal-define-key
