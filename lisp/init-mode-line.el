@@ -6,8 +6,11 @@
 (setq-default mode-line-format nil)
 
 (require 'awesome-tray)
-(setq awesome-tray-active-modules
-      '("buffer-name"))
+(setq awesome-tray-active-modules '("buffer-name" "date")
+      awesome-tray-essential-modules '("buffer-name")
+      awesome-tray-date-format "%l:%M %e %b %a")
+
+
 (awesome-tray-mode)
 
 (provide 'init-mode-line)
