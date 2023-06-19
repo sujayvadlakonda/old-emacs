@@ -299,6 +299,13 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key key-translation-map (kbd "C-M-h") (kbd "C-M-<backspace>"))
 
 
+
+(when (maybe-require-package 'beacon)
+  (setq-default beacon-lighter "")
+  (setq-default beacon-size 20)
+  (add-hook 'after-init-hook 'beacon-mode))
+
+
 ;; Modal editing
 (require-package 'meow)
 
