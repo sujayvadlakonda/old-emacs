@@ -418,6 +418,11 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "sys" "system")
 (define-global-abbrev "kbd" "keyboard")
 (define-global-abbrev "inv" "investigate")
+(define-global-abbrev "appt" "appointment")
+(define-global-abbrev "tmrw" "tomorrow")
+(define-global-abbrev "ppl" "people")
+
+(define-global-abbrev "ot" "to")
 
 (defun increment-medicine ()
   "Increment text in the form '[1/2] Medicine_Name 2257'"
