@@ -438,7 +438,8 @@ Otherwise it will be `org-todo'."
   (backward-char 1)
   (kill-line)
   (insert " ")
-  (insert (format-time-string "%H%M" (current-time))))
+  (insert (format-time-string "%H%M" (current-time)))
+  (save-buffer))
 
 
 (defvar sujay/org-agenda-buffer nil
