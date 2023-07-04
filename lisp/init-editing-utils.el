@@ -320,6 +320,7 @@ ORIG is the advised function, which is called with its ARGS."
    '("s" . whole-line-or-region-kill-region)
    '("y" . whole-line-or-region-kill-ring-save)
    '("p" . meow-yank)
+   '("P" . meow-yank-pop)
 
    '("u" . meow-undo)
 
@@ -327,6 +328,9 @@ ORIG is the advised function, which is called with its ARGS."
    '("w" . meow-mark-word)
    '("e" . meow-next-word)
    '("b" . meow-back-word)
+   '("W" . meow-mark-symbol)
+   '("E" . meow-next-symbol)
+   '("B" . meow-back-symbol)
 
    '("c" . meow-change)
    
@@ -371,6 +375,10 @@ ORIG is the advised function, which is called with its ARGS."
 (define-key sujay/leader-map (kbd "B") 'ibuffer)
 
 (define-key sujay/leader-map (kbd "k") 'kill-this-buffer)
+(define-key sujay/leader-map (kbd "m") 'increment-medicine)
+
+(define-key sujay/leader-map (kbd "w") 'push-window-configuration)
+(define-key sujay/leader-map (kbd "W") 'pop-window-configuration)
 
 (blink-cursor-mode -1)
 (setq visible-cursor nil)
