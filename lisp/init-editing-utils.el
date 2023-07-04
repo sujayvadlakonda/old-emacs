@@ -352,23 +352,6 @@ ORIG is the advised function, which is called with its ARGS."
 (require 'meow)
 (meow-setup)
 (meow-global-mode 1)
-;; (defvar sujay/normal-map (make-sparse-keymap))
-;; (define-minor-mode sujay/modal-editing-mode ""
-;;   :init-value nil :keymap sujay/normal-map)
-
-;; (define-key global-map (kbd "C-g") 'sujay/modal-editing-mode)
-;; (define-key sujay/normal-map (kbd "C-g") 'keyboard-quit)
-;; (define-key sujay/normal-map (kbd "i") 'sujay/modal-editing-mode)
-
-;; (define-key sujay/normal-map (kbd "j") 'backward-char)
-;; (define-key sujay/normal-map (kbd "k") 'next-line)
-;; (define-key sujay/normal-map (kbd "l") 'previous-line)
-;; (define-key sujay/normal-map (kbd ";") 'forward-char)
-
-;; (define-key sujay/normal-map (kbd "y") 'kill-ring-save)
-;; (define-key sujay/normal-map (kbd "p") 'yank)
-
-;; (define-key sujay/normal-map (kbd "u") 'undo)
 
 (define-key sujay/leader-map (kbd "b") 'consult-buffer)
 (define-key sujay/leader-map (kbd "f") 'find-file)
