@@ -112,5 +112,21 @@ Call a second time to restore the original window configuration."
 (setq window-divider-default-places 'bottom-only)
 (window-divider-mode t)
 
+
+(defvar saved-window-configuration nil)
+
+(defun push-window-configuration ()
+  (interactive)
+  (push (current-window-configuration) saved-window-configuration))
+
+(defun pop-window-configuration ()
+  (interactive)
+  (let ((config (pop saved-window-configuration)))
+    (if config
+        (set-window-configuration config)
+      (if (> (length (window-list)) 1)
+          (delete-window)
+        (bury-buffer)))))
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
