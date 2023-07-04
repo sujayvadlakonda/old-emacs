@@ -46,7 +46,7 @@ there is no current file, eval the current buffer."
         (file (buffer-file-name)))
     (if file
         (progn
-          (save-some-buffers nil (apply-partially 'derived-mode-p 'emacs-lisp-mode))
+          (save-some-buffers t (apply-partially 'derived-mode-p 'emacs-lisp-mode))
           (load-file (buffer-file-name))
           (message "Loaded %s" file))
       (eval-buffer)
