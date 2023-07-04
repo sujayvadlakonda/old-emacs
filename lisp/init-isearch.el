@@ -45,6 +45,10 @@ This is useful when followed by an immediate kill."
 
 (define-key isearch-mode-map [(control return)] 'sanityinc/isearch-exit-other-end)
 
+(with-eval-after-load 'consult
+  (define-key global-map [remap isearch-forward] 'consult-line))
+
+(require-package 'helpful)
 
 (provide 'init-isearch)
 ;;; init-isearch.el ends here
