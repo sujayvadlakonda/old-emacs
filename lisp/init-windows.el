@@ -109,5 +109,8 @@ Call a second time to restore the original window configuration."
   (add-hook 'after-init-hook (apply-partially 'windswap-default-keybindings 'shift 'control)))
 
 
+(setq window-divider-default-places 'bottom-only)
+(window-divider-mode t)
+
 (provide 'init-windows)
 ;;; init-windows.el ends here
