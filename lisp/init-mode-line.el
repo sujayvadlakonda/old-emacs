@@ -1,8 +1,6 @@
-;;; init-mode-line.el --- Mode line optimization :) -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
+;; -*- lexical-binding: t -*-
+;; Puts some information in echo area, and gets rid of mode line
 
-;; Don't display mode line
 (setq-default mode-line-format nil)
 
 (require 'awesome-tray)
@@ -10,8 +8,12 @@
       awesome-tray-essential-modules '("buffer-name")
       awesome-tray-date-format "%l:%M %e %b %a")
 
+(defun inherit! (child-face parent-face)
+  (set-face-attribute child-face nil :inherit parent-face))
+
+(inherit! 'awesome-tray-module-buffer-name-face 'font-lock-constant-face)
+(inherit! 'awesome-tray-module-date-face 'default)
 
 (awesome-tray-mode)
 
 (provide 'init-mode-line)
-;;; init-mode-line.el ends here
