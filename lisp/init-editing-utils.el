@@ -305,83 +305,10 @@ ORIG is the advised function, which is called with its ARGS."
   (setq-default beacon-size 20)
   (add-hook 'after-init-hook 'beacon-mode))
 
-
-;; Modal editing
-(require-package 'meow)
-
-(defun meow-setup ()
-  (meow-normal-define-key
-   '("j" . meow-left)
-   '("k" . meow-next)
-   '("l" . meow-prev)
-   '(";" . meow-right)
-
-   '("d" . meow-delete)
-   '("s" . whole-line-or-region-kill-region)
-   '("y" . whole-line-or-region-kill-ring-save)
-   '("p" . meow-yank)
-   '("P" . meow-yank-pop)
-
-   '("u" . meow-undo)
-
-   '("x" . meow-line)
-   '("w" . meow-mark-word)
-   '("e" . meow-next-word)
-   '("b" . meow-back-word)
-   '("W" . meow-mark-symbol)
-   '("E" . meow-next-symbol)
-   '("B" . meow-back-symbol)
-
-   '("c" . meow-change)
-   
-   '("0" . meow-expand-0)
-   '("9" . meow-expand-9)
-   '("8" . meow-expand-8)
-   '("7" . meow-expand-7)
-   '("6" . meow-expand-6)
-   '("5" . meow-expand-5)
-   '("4" . meow-expand-4)
-   '("3" . meow-expand-3)
-   '("2" . meow-expand-2)
-   '("1" . meow-expand-1)
-
-   '("z" . execute-extended-command))
-  
-  (defvar sujay/leader-map (make-sparse-keymap))
-  (meow-normal-define-key
-   (cons "SPC" sujay/leader-map))
-  (meow-motion-overwrite-define-key
-   (cons "SPC" sujay/leader-map)))
-
-(require 'meow)
-(meow-setup)
-(meow-global-mode 1)
-
-(define-key sujay/leader-map (kbd "b") 'consult-buffer)
-(define-key sujay/leader-map (kbd "f") 'find-file)
-
-(define-key sujay/leader-map (kbd "s") 'save-buffer)
-
-(define-key sujay/leader-map (kbd "0") 'delete-window)
-(define-key sujay/leader-map (kbd "1") 'sanityinc/toggle-delete-other-windows)
-(define-key sujay/leader-map (kbd "2") (split-window-func-with-other-buffer 'split-window-vertically))
-(define-key sujay/leader-map (kbd "3") (split-window-func-with-other-buffer 'split-window-horizontally))
-(define-key sujay/leader-map (kbd "o") 'switch-window)
-
-(define-key sujay/leader-map (kbd "a") 'sujay/org-agenda)
-(define-key sujay/leader-map (kbd "c") 'sujay/org-capture)
-
-(define-key sujay/leader-map (kbd "g") 'magit)
-(define-key sujay/leader-map (kbd "B") 'ibuffer)
-
-(define-key sujay/leader-map (kbd "k") 'kill-this-buffer)
-(define-key sujay/leader-map (kbd "m") 'increment-medicine)
-
-(define-key sujay/leader-map (kbd "w") 'push-window-configuration)
-(define-key sujay/leader-map (kbd "W") 'pop-window-configuration)
-
 (blink-cursor-mode -1)
 (setq visible-cursor nil)
+
+(require 'init-vim)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
