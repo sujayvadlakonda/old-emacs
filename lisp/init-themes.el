@@ -20,7 +20,7 @@
   (setq sujay/active-theme theme))
 
 (require-package 'modus-themes)
-(sujay/load-theme 'modus-vivendi-tinted)
+(sujay/load-theme 'modus-vivendi)
 
 (provide 'init-themes)
 ;;; init-themes.el ends here
