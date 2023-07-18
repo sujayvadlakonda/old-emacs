@@ -505,9 +505,10 @@ Otherwise it will be `org-todo'."
 (defun sujay/org-capture ()
   "Capture a todo into the inbox."
   (interactive)
-  (org-capture nil "t")
-  (when (featurep 'meow)
-    (meow-insert)))
+  (org-capture nil "t"))
+
+(with-eval-after-load 'evil
+  (add-hook 'org-capture-mode-hook 'evil-insert-state))
 
 (defun sujay/org-capture-finalize ()
   (interactive)
