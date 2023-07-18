@@ -421,6 +421,8 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "appt" "appointment")
 (define-global-abbrev "tmrw" "tomorrow")
 (define-global-abbrev "ppl" "people")
+(define-global-abbrev "q" "question")
+(define-global-abbrev "qs" "questions")
 
 (define-global-abbrev "ot" "to")
 
