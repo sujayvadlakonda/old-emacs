@@ -1,4 +1,5 @@
 (package! 'evil)
+(setq evil-disable-insert-state-bindings t)
 (setq evil-want-C-i-jump nil)
 (setq evil-want-integration t)
 (setq evil-want-keybinding nil)
