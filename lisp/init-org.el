@@ -68,7 +68,8 @@
           (lambda () (remove-text-properties
                       (point-min) (point-max) '(mouse-face t))))
 
-
+(with-eval-after-load 'evil
+  (add-to-list 'evil-motion-state-modes 'org-agenda-mode))
 
 
 
