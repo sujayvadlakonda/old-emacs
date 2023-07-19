@@ -15,28 +15,28 @@
 (evil-global-set-key 'motion (kbd ";") 'evil-forward-char)
 (evil-global-set-key 'motion (kbd "h") 'evil-repeat-find-char)
 
+(defvar sujay/leader-map (make-sparse-keymap))
+(evil-global-set-key 'motion (kbd "SPC") sujay/leader-map)
+(define-key sujay/leader-map (kbd "b") 'consult-buffer)
+(define-key sujay/leader-map (kbd "f") 'find-file)
+(define-key sujay/leader-map (kbd "s") 'save-buffer)
+(define-key sujay/leader-map (kbd "0") 'delete-window)
+(define-key sujay/leader-map (kbd "1") 'sanityinc/toggle-delete-other-windows)
+(define-key sujay/leader-map (kbd "2")
+  (split-window-func-with-other-buffer 'split-window-vertically))
+(define-key sujay/leader-map (kbd "3")
+  (split-window-func-with-other-buffer 'split-window-horizontally))
+(define-key sujay/leader-map (kbd "o") 'switch-window)
+(define-key sujay/leader-map (kbd "a") 'sujay/org-agenda)
+(define-key sujay/leader-map (kbd "c") 'sujay/org-capture)
+(define-key sujay/leader-map (kbd "g") 'magit)
+(define-key sujay/leader-map (kbd "B") 'ibuffer)
+(define-key sujay/leader-map (kbd "k") 'kill-this-buffer)
+(define-key sujay/leader-map (kbd "m") 'increment-medicine)
+(define-key sujay/leader-map (kbd "w") 'push-window-configuration)
+(define-key sujay/leader-map (kbd "W") 'pop-window-configuration)
+
 (package! 'evil-mc)
 (global-evil-mc-mode)
-
-(package! 'evil-leader)
-(global-evil-leader-mode)
-(evil-leader/set-leader "SPC")
-(evil-leader/set-key
-  "b" 'consult-buffer
-  "f" 'find-file
-  "s" 'save-buffer
-  "0" 'delete-window
-  "1" 'sanityinc/toggle-delete-other-window
-  "2" 'vim-vertical-split
-  "3" 'vim-horizontal-split
-  "o" 'switch-window
-  "a" 'sujay/org-agenda
-  "c" 'sujay/org-capture
-  "g" 'magit
-  "B" 'ibuffer
-  "k" 'kill-this-buffer
-  "m" 'increment-medicine
-  "w" 'push-window-configuration
-  "W" 'pop-window-configuration)
 
 (provide 'init-vim)
