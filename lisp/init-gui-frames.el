@@ -94,6 +94,8 @@
 
 (require-package 'disable-mouse)
 
+(ignore-errors
+  (set-frame-font "JetBrains Mono"))
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here
