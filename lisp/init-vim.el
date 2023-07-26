@@ -16,6 +16,10 @@
 (evil-global-set-key 'motion (kbd ";") 'evil-forward-char)
 (evil-global-set-key 'motion (kbd "h") 'evil-repeat-find-char)
 
+;; Don't bind 't' in special buffers
+(evil-global-set-key 'motion (kbd "t") nil)
+(evil-global-set-key 'normal (kbd "t") 'evil-find-char-to)
+
 (defvar sujay/leader-map (make-sparse-keymap))
 (evil-global-set-key 'motion (kbd "SPC") sujay/leader-map)
 (define-key sujay/leader-map (kbd "b") 'consult-buffer)
