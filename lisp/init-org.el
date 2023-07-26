@@ -41,7 +41,7 @@
 
 
 ;; Various preferences
-(setq org-log-done t
+(setq org-log-done nil
       org-edit-timestamp-down-means-later t
       org-hide-emphasis-markers nil
       org-catch-invisible-edits 'show
