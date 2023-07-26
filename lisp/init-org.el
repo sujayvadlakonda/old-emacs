@@ -424,6 +424,9 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "ppl" "people")
 (define-global-abbrev "q" "question")
 (define-global-abbrev "qs" "questions")
+(define-global-abbrev "acct" "account")
+(define-global-abbrev "abt" "about")
+(define-global-abbrev "dir" "directory")
 
 (define-global-abbrev "ot" "to")
 
