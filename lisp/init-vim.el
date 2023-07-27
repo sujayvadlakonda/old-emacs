@@ -47,4 +47,6 @@
 (package! 'evil-mc)
 (global-evil-mc-mode)
 
+(global-unset-key (kbd "C-x"))
+
 (provide 'init-vim)
