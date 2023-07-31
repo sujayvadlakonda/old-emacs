@@ -23,6 +23,10 @@
 ;; Don't bind 'RET' in special buffers
 (evil-global-set-key 'motion (kbd "RET") nil)
 
+;; Rebind move to beginning of line
+(evil-global-set-key 'motion (kbd "^") nil)
+(evil-global-set-key 'motion (kbd "#") 'evil-first-non-blank)
+
 (defvar sujay/leader-map (make-sparse-keymap))
 (evil-global-set-key 'motion (kbd "SPC") sujay/leader-map)
 (define-key sujay/leader-map (kbd "b") 'consult-buffer)
