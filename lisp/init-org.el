@@ -339,7 +339,8 @@ typical word processor."
   (define-key org-agenda-mode-map (kbd "k") 'org-agenda-next-line)
   (define-key org-agenda-mode-map (kbd "l") 'org-agenda-previous-line)
   (define-key org-agenda-mode-map (kbd "c") 'sujay/org-capture)
-  (define-key org-agenda-mode-map (kbd "u") 'org-agenda-undo))
+  (define-key org-agenda-mode-map (kbd "u") 'org-agenda-undo)
+  (define-key org-agenda-mode-map (kbd "C-c C-t") nil))
 
 
 ;; ;; Show iCal calendars in the org agenda
