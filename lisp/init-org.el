@@ -529,6 +529,9 @@ Otherwise it will be `org-todo'."
 
 (setq org-default-notes-file "~/gtd/inbox.org")
 
+;; Section: Org Agenda
+(advice-add 'org-agenda-todo :after (lambda (&rest _) (org-agenda-redo-all t)))
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
