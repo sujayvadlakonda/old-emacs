@@ -417,6 +417,7 @@ Otherwise it will be `org-todo'."
 
 (add-hook 'org-mode-hook 'abbrev-mode)
 (define-global-abbrev "w" "with")
+(define-global-abbrev "wo" "without")
 (define-global-abbrev "bc" "because")
 (define-global-abbrev "sys" "system")
 (define-global-abbrev "kbd" "keyboard")
