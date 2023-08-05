@@ -9,6 +9,14 @@
 ;; Produce backtraces when errors occur: can be helpful to diagnose startup issues
 (setq debug-on-error nil)
 
+(defvar file-name-handler-alist-old file-name-handler-alist)
+
+(setq file-name-handler-alist nil)
+
+(add-hook 'after-init-hook
+          #'(lambda ()
+              (setq file-name-handler-alist file-name-handler-alist-old)))
+
 (let ((minver "26.1"))
   (when (version< emacs-version minver)
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
