@@ -281,7 +281,7 @@ typical word processor."
 ;; Save clock data and notes in the LOGBOOK drawer
 (setq org-clock-into-drawer t)
 ;; Save state changes in the LOGBOOK drawer
-(setq org-log-into-drawer t)
+(setq org-log-into-drawer nil)
 ;; Removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
 
