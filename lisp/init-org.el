@@ -483,6 +483,11 @@ Otherwise it will be `org-todo'."
                 ((org-agenda-overriding-header "Waiting")))))))
 
 (defun next-actions-skip-function ()
+  "Skip tasks in a project that are not the next action.
+A project is a 1 star heading without an org-todo-state.
+Tasks are org headings with the \"TODO\" org-todo-state.
+Next action is the first task under a project.
+"
   (let ((is-top-level (eq 1 (org-current-level)))
         (should-skip nil))
     (unless is-top-level
@@ -493,6 +498,7 @@ Otherwise it will be `org-todo'."
                     (string= "WAITING" (org-get-todo-state)))
             (setq should-skip t)))))
     (when should-skip
+      ;; Skip past tasks in the same project (siblings)
       (while (org-goto-sibling))
       (or (outline-next-heading)
           (goto-char (point-max))))))
