@@ -432,6 +432,7 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "acct" "account")
 (define-global-abbrev "abt" "about")
 (define-global-abbrev "dir" "directory")
+(define-global-abbrev "prev" "previous")
 
 (define-global-abbrev "ot" "to")
 
