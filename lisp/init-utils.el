@@ -85,6 +85,10 @@
     (setq sequence
           (remove element (eval sequence)))))
 
+(defun define-kbd (keymap key definition)
+  "Better define key."
+  (define-key keymap (kbd key) definition))
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here
