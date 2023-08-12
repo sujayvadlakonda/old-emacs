@@ -10,6 +10,11 @@
 (setq debug-on-error nil)
 
 (defvar file-name-handler-alist-old file-name-handler-alist)
+(defun require! (feature)
+  "Require FEATURE without providing."
+  (unless (featurep feature)
+    (load (symbol-name feature))
+    (provide feature)))
 
 (setq file-name-handler-alist nil)
 
