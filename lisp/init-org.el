@@ -416,6 +416,7 @@ Otherwise it will be `org-todo'."
         'org-checkbox-statistics-todo))))
 
 
+(setq save-abbrevs nil)
 (add-hook 'org-mode-hook 'abbrev-mode)
 (define-global-abbrev "w" "with")
 (define-global-abbrev "wo" "without")
