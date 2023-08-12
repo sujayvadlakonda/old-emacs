@@ -399,20 +399,21 @@ typical word processor."
 ;; I don't use variable width fonts in org-mode
 (remove! 'org-mode 'meow-expand-exclude-mode-list)
 
-;; Absolute hack to make [6/5 appear green
-(defun org-get-checkbox-statistics-face ()
-  "Select the face for checkbox statistics.
+;; Absolute hack to make [6/5] appear green
+(with-eval-after-load 'org-list
+  (defun org-get-checkbox-statistics-face ()
+    "Select the face for checkbox statistics.
 The face will be `org-done' when all relevant boxes are checked.
 Otherwise it will be `org-todo'."
-  (if (match-end 1)
-      (if (equal (match-string 1) "100%")
+    (if (match-end 1)
+        (if (equal (match-string 1) "100%")
+            'org-checkbox-statistics-done
+          'org-checkbox-statistics-todo)
+      (if (and (> (match-end 2) (match-beginning 2))
+               (or (string> (match-string 2) (match-string 3))
+                   (string= (match-string 2) (match-string 3))))
           'org-checkbox-statistics-done
-        'org-checkbox-statistics-todo)
-    (if (and (> (match-end 2) (match-beginning 2))
-             (or (string> (match-string 2) (match-string 3))
-                 (string= (match-string 2) (match-string 3))))
-        'org-checkbox-statistics-done
-      'org-checkbox-statistics-todo)))
+        'org-checkbox-statistics-todo))))
 
 
 (add-hook 'org-mode-hook 'abbrev-mode)
