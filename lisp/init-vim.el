@@ -54,3 +54,8 @@
 (global-unset-key (kbd "C-x"))
 
 (provide 'init-vim)
+
+(defun exit ()
+  (interactive)
+  (setq confirm-kill-processes nil)
+  (save-buffers-kill-emacs t))
