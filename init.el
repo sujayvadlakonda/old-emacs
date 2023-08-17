@@ -23,7 +23,7 @@
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
 (when (version< emacs-version "27.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
-(require! 'init-startup)
+(require! 'init-startup-hacks)
 
 (require 'init-benchmarking) ;; Measure startup time
 
