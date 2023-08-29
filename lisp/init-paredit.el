@@ -41,5 +41,8 @@
 
 (add-hook 'sanityinc/lispy-modes-hook 'enable-paredit-mode)
 
+(with-eval-after-load 'paredit
+  (define-kbd paredit-mode-map ";" nil))
+
 (provide 'init-paredit)
 ;;; init-paredit.el ends here

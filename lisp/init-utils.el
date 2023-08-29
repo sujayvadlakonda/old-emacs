@@ -89,6 +89,11 @@
   "Better define key."
   (define-key keymap (kbd key) definition))
 
+(defun exit ()
+  (interactive)
+  (setq confirm-kill-processes nil)
+  (save-buffers-kill-emacs t))
+
 
 (provide 'init-utils)
 ;;; init-utils.el ends here

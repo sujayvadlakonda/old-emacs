@@ -49,8 +49,7 @@
       org-fast-tag-selection-single-key 'expert
       org-html-validation-link nil
       org-export-kill-product-buffer-when-displayed t
-      org-tags-column 80
-      org-startup-indented t)
+      org-tags-column 80)
 
 
 ;; Lots of stuff from http://doc.norang.ca/org-mode.html
@@ -521,10 +520,10 @@ Next action is the first task under a project.
 (defun sujay/org-capture ()
   "Capture a todo into the inbox."
   (interactive)
-  (org-capture nil "t"))
-
-(with-eval-after-load 'evil
-  (add-hook 'org-capture-mode-hook 'evil-insert-state))
+  (org-capture nil "t")
+  (modalka-mode -1)
+  (when multistate-mode
+    (multistate-insert-state)))
 
 (defun sujay/org-capture-finalize ()
   (interactive)
@@ -539,8 +538,10 @@ Next action is the first task under a project.
 (setq org-default-notes-file "~/gtd/inbox.org")
 
 ;; Section: Org Agenda
-(advice-add 'org-agenda-todo :after (lambda (&rest _) (org-agenda-redo-all t)))
+(advice-add 'org-agenda-todo :after (lambda (&rest _) (org-agenda-redo)))
 
+;; Minimize logging
+(setq org-log-repeat nil)
 
 (provide 'init-org)
 ;;; init-org.el ends here

@@ -308,7 +308,7 @@ ORIG is the advised function, which is called with its ARGS."
 (blink-cursor-mode -1)
 (setq visible-cursor nil)
 
-(require 'init-vim)
+(require! 'init-vim)
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

@@ -88,8 +88,13 @@
 ;; Change global font size easily
 
 (require-package 'default-text-scale)
-(add-hook 'after-init-hook 'default-text-scale-mode)
-
+(defun default-text-scale-set (new-height)
+  (let* ((current-height (face-attribute 'default :height))
+         (difference (- new-height current-height)))
+    (default-text-scale-increment difference)))
+(add-hook 'after-init-hook (lambda ()
+                             (default-text-scale-mode)
+                             (default-text-scale-set 300)))
 
 
 (require-package 'disable-mouse)
