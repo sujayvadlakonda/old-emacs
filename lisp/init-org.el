@@ -67,6 +67,8 @@
           (lambda () (remove-text-properties
                       (point-min) (point-max) '(mouse-face t))))
 
+(add-hook 'org-agenda-finalize-hook 'multistate-motion-state)
+
 (with-eval-after-load 'evil
   (add-to-list 'evil-motion-state-modes 'org-agenda-mode))
 
