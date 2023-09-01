@@ -55,7 +55,9 @@
 (define-kbd multistate-normal-state-map "m" 'mc/mark-previous-like-this)
 (define-kbd multistate-normal-state-map "*" 'mc/mark-all-like-this)
 
-(define-kbd multistate-normal-state-map "w" 'forward-word)
+(package! 'meow)
+(define-kbd multistate-normal-state-map "w" 'meow-next-word)
+(define-kbd multistate-normal-state-map "b" 'meow-back-word)
 
 (define-kbd multistate-normal-state-map "x" 'delete-char)
 
@@ -70,11 +72,6 @@
 ;;                                    (interactive)
 ;;                                    (modalka-mode -1)
 ;;                                    (forward-char)))
-
-;; (define-kbd modalka-mode-map "w" (lambda ()
-;;                                    (interactive)
-;;                                    (set-mark-command nil)
-;;                                    (forward-word)))
 
 ;; (define-kbd modalka-mode-map "v" 'set-mark-command)
 ;; (define-kbd modalka-mode-map "V" (lambda ()
@@ -118,7 +115,6 @@
 ;; (define-kbd modalka-mode-map "x" 'delete-char)
 ;; (define-kbd modalka-mode-map "gg" 'beginning-of-buffer)
 ;; (define-kbd modalka-mode-map "G" 'end-of-buffer)
-;; (define-kbd modalka-mode-map "b" 'backward-word)
 
 ;; (define-kbd modalka-mode-map "z" 'execute-extended-command)
 ;; (define-kbd modalka-mode-map "M-x" 'ignore)
