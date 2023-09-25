@@ -5,6 +5,7 @@
 (multistate-global-mode)
 
 (cl-defun define-state (name &key map (cursor t))
+  "Define state while ignoring if state already exists."
   (ignore-errors
     (multistate-define-state name :parent map :cursor cursor)))
 
@@ -37,8 +38,6 @@
 
 (define-state 'insert :cursor 'bar)
 (define-kbd multistate-insert-state-map "ESC" 'multistate-normal-state)
-(define-kbd multistate-insert-state-map "C-g" 'multistate-normal-state)
-(define-kbd multistate-insert-state-map "`" 'multistate-normal-state)
 
 (define-state 'normal :map 'multistate-motion-state-map)
 (define-kbd multistate-normal-state-map "i" 'multistate-insert-state)
@@ -56,8 +55,23 @@
 (define-kbd multistate-normal-state-map "*" 'mc/mark-all-like-this)
 
 (package! 'meow)
+(require 'meow)
 (define-kbd multistate-normal-state-map "w" 'meow-next-word)
 (define-kbd multistate-normal-state-map "b" 'meow-back-word)
+
+(define-kbd multistate-normal-state-map "o" (lambda ()
+                                              (interactive)
+                                              (multistate-insert-state)
+                                              (end-of-line)
+                                              (newline-and-indent)))
+
+(define-kbd multistate-normal-state-map "O" (lambda ()
+                                              (interactive)
+                                              (multistate-insert-state)
+                                              (beginning-of-line)
+                                              (newline-and-indent)
+                                              (previous-line)
+                                              (indent-for-tab-command)))
 
 (define-kbd multistate-normal-state-map "x" 'delete-char)
 
@@ -74,52 +88,35 @@
 ;;                                    (forward-char)))
 
 ;; (define-kbd modalka-mode-map "v" 'set-mark-command)
-;; (define-kbd modalka-mode-map "V" (lambda ()
-;;                                    (interactive)
-;;                                    (beginning-of-line)
-;;                                    (set-mark-command nil)
-;;                                    (end-of-line)
-;;                                    (forward-char)))
+(define-kbd multistate-normal-state-map "V" (lambda ()
+                                              (interactive)
+                                              (beginning-of-line)
+                                              (set-mark-command nil)
+                                              (end-of-line)
+                                              (forward-char)))
 
-;; (define-kbd modalka-mode-map "o" (lambda ()
-;;                                    (interactive)
-;;                                    (modalka-mode -1)
-;;                                    (end-of-line)
-;;                                    (newline-and-indent)))
-;; (define-kbd modalka-mode-map "O" (lambda ()
-;;                                    (interactive)
-;;                                    (modalka-mode -1)
-;;                                    (beginning-of-line)
-;;                                    (newline-and-indent)
-;;                                    (previous-line)
-;;                                    (indent-for-tab-command)))
-;; (define-kbd modalka-mode-map "A" (lambda ()
-;;                                    (interactive)
-;;                                    (modalka-mode -1)
-;;                                    (end-of-line)))
+(define-kbd multistate-normal-state-map "A" (lambda ()
+                                              (interactive)
+                                              (multistate-insert-state)
+                                              (end-of-line)))
+(define-kbd multistate-normal-state-map "I" (lambda ()
+                                              (interactive)
+                                              (multistate-insert-state)
+                                              (back-to-indentation)))
 
 ;; (define-kbd modalka-mode-map "I" (lambda ()
 ;;                                    (interactive)
 ;;                                    (modalka-mode -1)
 ;;                                    (back-to-indentation)))
 
-;; (define-kbd modalka-mode-map "c" (lambda ()
-;;                                    (interactive)
-;;                                    (whole-line-or-region-kill-region 1)
-;;                                    (modalka-mode -1)))
-;; (define-kbd modalka-mode-map "C" (lambda ()
-;;                                    (interactive)
-;;                                    (kill-line)
-;;                                    (modalka-mode -1)))
+(define-kbd multistate-normal-state-map "c" (lambda ()
+                                              (interactive)
+                                              (whole-line-or-region-kill-region 1)
+                                              (multistate-insert-state)))
+(define-kbd multistate-normal-state-map "C" (lambda ()
+                                              (interactive)
+                                              (kill-line)
+                                              (multistate-insert-state)))
 
-;; (define-kbd modalka-mode-map "x" 'delete-char)
 ;; (define-kbd modalka-mode-map "gg" 'beginning-of-buffer)
 ;; (define-kbd modalka-mode-map "G" 'end-of-buffer)
-
-;; (define-kbd modalka-mode-map "z" 'execute-extended-command)
-;; (define-kbd modalka-mode-map "M-x" 'ignore)
-
-
-;; (define-kbd modalka-mode-map "C-g" 'keyboard-quit)
-
-;; (global-unset-key (kbd "C-x"))

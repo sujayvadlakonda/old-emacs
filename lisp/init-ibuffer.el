@@ -54,5 +54,9 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+
+(add-hook 'ibuffer-mode-hook 'multistate-motion-state)
+
+
 (provide 'init-ibuffer)
 ;;; init-ibuffer.el ends here

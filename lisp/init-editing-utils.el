@@ -34,8 +34,6 @@
  echo-keystrokes 1e-9
  cursor-in-non-selected-windows nil)
 
-(add-hook 'after-init-hook 'delete-selection-mode)
-
 (add-hook 'after-init-hook 'global-auto-revert-mode)
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
@@ -296,6 +294,7 @@ ORIG is the advised function, which is called with its ARGS."
 
 ;; My keyboard doesn't have a backspace key. So I defined some replacements.
 (define-key key-translation-map (kbd "C-h") (kbd "DEL"))
+(define-key key-translation-map (kbd "<escape>") (kbd "C-g"))
 (define-key key-translation-map (kbd "C-M-h") (kbd "C-M-<backspace>"))
 
 

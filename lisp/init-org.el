@@ -434,6 +434,7 @@ Otherwise it will be `org-todo'."
 (define-global-abbrev "abt" "about")
 (define-global-abbrev "dir" "directory")
 (define-global-abbrev "prev" "previous")
+(define-global-abbrev "calc" "calculate")
 
 (define-global-abbrev "ot" "to")
 
@@ -538,9 +539,6 @@ Next action is the first task under a project.
   (define-key org-capture-mode-map (kbd "C-c C-c") #'sujay/org-capture-finalize))
 
 (setq org-default-notes-file "~/gtd/inbox.org")
-
-;; Section: Org Agenda
-(advice-add 'org-agenda-todo :after (lambda (&rest _) (org-agenda-redo)))
 
 ;; Minimize logging
 (setq org-log-repeat nil)
